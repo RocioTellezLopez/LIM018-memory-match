@@ -16,12 +16,13 @@ import data from '../data/pokemon/pokemon.js';
 import  '../components/timer.js';
 
 //console.log(data);
+
 const itemsPokemon = data.items;
 const dobleitems = []
 const mensaje = document.getElementById("mensaje")
 const puntaje = document.getElementById("puntos")
 const barajar = document.getElementById("barajar")
-
+const lives = document.getElementById("vidas")
 
 for(let i=0; i<itemsPokemon.length ; i++ ){
   dobleitems.push (itemsPokemon[i])
@@ -34,6 +35,7 @@ for(let i=0; i<itemsPokemon.length ; i++ ){
 function shuffle (dobleitems){    // Función para barajar cartas y desordenarlas
   return dobleitems.sort(()=>{
     return Math.random()-0.5})  //utilizamos sort para desordenar los 18 items mediante el método math.random
+  
 }
 
 
@@ -42,20 +44,15 @@ const createCards = () => {
   const areaCarta = document.getElementById("areaCarta")
   shuffle(dobleitems).forEach(function(item){
     //console.log(item)
-    areaCarta.innerHTML +=
-     `<div class="tarjeta"  data-pokemonid="${item.id}"> 
-    <div class="cara posterior" id="posterior"> <img src ='${item.image}' width ="80px" heigth="80px" >  </div>
-    <div class="cara superior">
-    <img src="./img/signo-de-interrogacion.png" width = "80px" heigth="80px">
-    </div>
-    </div>`
+    areaCarta.innerHTML += `<div class="tarjeta"  data-pokemonid="${item.id}"><div class="cara posterior" id="posterior"> <img src ='${item.image}' width ="80px" heigth="80px"></div><div class="cara superior"><img src="./img/signo-de-interrogacion.png" width = "80px" heigth="80px"></div></div>`
   })
   const tarjetas = document.querySelectorAll(".tarjeta");
   let selecciones =[];
   let score = 0;
+  let counterLife= 15;
   //console.log(tarjetas)
   for(let i=0; i<tarjetas.length ; i++ ){
-    tarjetas[i].addEventListener("click", (e) =>{
+    tarjetas[i].addEventListener("click", () =>{
       tarjetas[i].style.transform = "rotateY(180deg)";
       selecciones.push(tarjetas[i])
       //console.log(e.currentTarget.dataset.pokemonid)
@@ -63,6 +60,7 @@ const createCards = () => {
       const selectLength= selecciones.length
       if (selectLength == 2){
       deseleccionar(selecciones)
+      counterLives(selecciones)
       winner(selecciones)
         selecciones = []
         //console.log(selecciones)
@@ -90,12 +88,17 @@ const createCards = () => {
         }
       }
     }
+
+    function counterLives(selecciones){
+      if(selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
+        counterLife--
+        console.log(counterLife)
+        lives.innerHTML = `${counterLife}`
+      }
+    }
+
     })
   }
-  barajar.addEventListener("click", () => {
-    //tarjetas.style.transform = "rotateY(180deg)";
-    shuffle(dobleitems);
-  })
 }
 export default createCards; shuffle;
 

@@ -1,0 +1,23 @@
+.modal-container {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgb(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 20%;
+    height: 50%;
+    background-color: aliceblue;
+    overflow: hidden;
+}
+
+.modal  img {
+    width: 40%;
+}

@@ -10,9 +10,8 @@ const createTimer = () => {
         setTimeout(function(){
             const perdiste = document.createElement ("div");
             perdiste.className = "perdedor"
-            perdiste.textContent = "Ganaste"
+            perdiste.textContent = " INTÉNTALO OTRA VEZ";
             mensaje.appendChild(perdiste);
-           perdiste.textContent = " INTÉNTALO OTRA VEZ";
         }
         ,1000);
     }

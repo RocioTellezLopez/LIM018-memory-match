@@ -20,6 +20,7 @@ const secondPage = document.getElementById("second")
 const game = document.getElementById("game")
 
 vamos.addEventListener("click", () => {
+    //event.preventDefault();
     player.textContent= `Hola ${nombre.value} !`
     container.className = "disabled";
     secondPage.className= "enabled";
