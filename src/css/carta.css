@@ -1,6 +1,7 @@
 .game{
-    -webkit-perspective: 1000 ;
-    margin: 2.3rem;
+   
+    -webkit-perspective: 1000;
+    perspective: 1000;
 }
 
 .table {
@@ -63,10 +64,14 @@
     background-color: #5681F0;
 }
 
+.tarjeta img {
+    width: 80px;
+    height: 80px;
+}
+
 .resultado {
     display: flex;
     flex-direction: column;
     justify-content: end;
     gap: 3rem;
     }
-

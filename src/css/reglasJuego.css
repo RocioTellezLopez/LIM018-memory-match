@@ -5,6 +5,13 @@
 .disabled {
     display: none;
 }
+.enabled {
+    display: block;
+}
+
+.disabled {
+    display: none;
+}
 
 .secondPage {
     display: flex;

@@ -1,16 +1,21 @@
-let segundos = 60 ;
+import './App.js'
+
+let segundos = 120 ;
 let intervaloTiempo = 0;
 
 const timer = document.getElementById("timer")
 const mensaje = document.getElementById("mensaje")
+const modalContainer = document.getElementById("modalContainer")
 
 const createTimer = () => {
-    if (segundos === 0){
+    if (segundos === 0  ){
         stopCounter();
         setTimeout(function(){
+            modalContainer.style.opacity = "1";
+            modalContainer.style.visibility ="visible";
             const perdiste = document.createElement ("div");
-            perdiste.className = "perdedor"
-            perdiste.textContent = " INTÉNTALO OTRA VEZ";
+            perdiste.className = "perdedor";
+            perdiste.textContent = "INTENTALO OTRA VEZ"
             mensaje.appendChild(perdiste);
         }
         ,1000);
@@ -28,9 +33,8 @@ const createTimer = () => {
     return timer
 }
 
-const jugar = document.getElementById("play")
 const startCounter =() =>{
-    intervaloTiempo = setInterval(createTimer,1000);
+    intervaloTiempo = setInterval(createTimer,600);
 
 }
 
@@ -38,8 +42,6 @@ const stopCounter =() =>{
     clearInterval(intervaloTiempo);
 }
 
-if (jugar){
-    jugar.addEventListener('click', startCounter);
-}
+export default startCounter
 
 

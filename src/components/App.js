@@ -13,58 +13,82 @@
 //
 
 import data from '../data/pokemon/pokemon.js';
-import  '../components/timer.js';
+import  createTimer from '../components/timer.js';
+import  '../components/medallas.js';
+import  createMedals from './medallas.js'
 
 //console.log(data);
 
 const itemsPokemon = data.items;
-const dobleitems = []
-const mensaje = document.getElementById("mensaje")
-const puntaje = document.getElementById("puntos")
-const barajar = document.getElementById("barajar")
-const lives = document.getElementById("vidas")
+const dobleitems = [];
+const mensaje = document.getElementById("mensaje");
+const puntaje = document.getElementById("puntos");
+const turn = document.getElementById("turnos");
+const modalContainer = document.getElementById("modalContainer");
+let selecciones =[];
+let score = 0;
+let countTurn = 0;
 
-for(let i=0; i<itemsPokemon.length ; i++ ){
-  dobleitems.push (itemsPokemon[i])
-  dobleitems.push (itemsPokemon[i])
+//const barajar = document.getElementById("barajar");
 
-}
-//console.log(dobleitems)
 
+  for(let i=0; i<itemsPokemon.length ; i++ ){
+    dobleitems.push (itemsPokemon[i], itemsPokemon[i]);
+  }
 
 function shuffle (dobleitems){    // Función para barajar cartas y desordenarlas
-  return dobleitems.sort(()=>{
-    return Math.random()-0.5})  //utilizamos sort para desordenar los 18 items mediante el método math.random
-  
+  return dobleitems.sort(()=>{return Math.random()-0.5})  //utilizamos sort para desordenar los 18 items mediante el método math.random
 }
 
-
-
 const createCards = () => {
-  const areaCarta = document.getElementById("areaCarta")
+  const areaCarta = document.getElementById("areaCarta");
+
   shuffle(dobleitems).forEach(function(item){
-    //console.log(item)
-    areaCarta.innerHTML += `<div class="tarjeta"  data-pokemonid="${item.id}"><div class="cara posterior" id="posterior"> <img src ='${item.image}' width ="80px" heigth="80px"></div><div class="cara superior"><img src="./img/signo-de-interrogacion.png" width = "80px" heigth="80px"></div></div>`
-  })
+    //Creando div "tarjeta"
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta";
+    tarjeta.setAttribute("data-pokemonid",`${item.id}`);
+    areaCarta.appendChild(tarjeta);
+
+    //Creando div "cara posterior"
+    const caraPosterior = document.createElement("div");
+    caraPosterior.className = "cara posterior";
+    caraPosterior.setAttribute("id", "posterior");
+    //Creando variable para presentar imagen de pokemon
+    const imagePokemon = document.createElement("img");
+    imagePokemon.src = `${item.image}`;
+    caraPosterior.appendChild(imagePokemon);
+
+    //Creando div "cara superior"  
+    const caraSuperior = document.createElement("div");
+    caraSuperior.className = "cara superior";
+    //Creando variable para presentar imagen de signo de interrogación
+    const imagePregunta = document.createElement("img");
+    imagePregunta.src = "./img/signo-de-interrogacion.png";
+    caraSuperior.appendChild(imagePregunta);
+
+    tarjeta.appendChild(caraPosterior);
+    tarjeta.appendChild(caraSuperior);
+
+  });
+
   const tarjetas = document.querySelectorAll(".tarjeta");
-  let selecciones =[];
-  let score = 0;
-  let counterLife= 15;
-  //console.log(tarjetas)
-  for(let i=0; i<tarjetas.length ; i++ ){
-    tarjetas[i].addEventListener("click", () =>{
-      tarjetas[i].style.transform = "rotateY(180deg)";
-      selecciones.push(tarjetas[i])
-      //console.log(e.currentTarget.dataset.pokemonid)
-      //console.log(selecciones)
-      const selectLength= selecciones.length
-      if (selectLength == 2){
-      deseleccionar(selecciones)
-      counterLives(selecciones)
-      winner(selecciones)
-        selecciones = []
-        //console.log(selecciones)
-      }
+ 
+  
+  //console.log(e.currentTarget.dataset.pokemonid)
+  
+  const flipCards = function (tarjetas) {
+    tarjetas.style.transform = "rotateY(180deg)";
+    selecciones.push(tarjetas);
+    const selectLength= selecciones.length
+    
+    if (selectLength == 2){
+    deseleccionar(selecciones);
+    winner(selecciones);
+    counterTurns();
+    
+      selecciones = [];
+    }
 
     function deseleccionar(selecciones) {
       setTimeout(()=> {
@@ -80,27 +104,57 @@ const createCards = () => {
         score +=100
         puntaje.innerHTML = `${score}`
         if(score == 900) {
-         const win = document.createElement ("div");
-         win.className = "ganador"
-         win.textContent = "Ganaste"
-         mensaje.appendChild(win);
-
+          modalContainer.style.opacity = "1";
+          modalContainer.style.visibility ="visible";
+          const win = document.createElement ("div");
+          win.className = "ganador"
+          win.textContent = "Ganaste"
+          mensaje.appendChild(win);
+          createMedals(countTurn)
         }
+        if (score < 900 ){
+         createTimer();
+      }
       }
     }
 
-    function counterLives(selecciones){
-      if(selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
-        counterLife--
-        console.log(counterLife)
-        lives.innerHTML = `${counterLife}`
-      }
+    function counterTurns(){
+      //console.log(selecciones)
+      countTurn++
+      turn.innerHTML = `${countTurn}`
+      /*if(selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
+        console.log(countTurn)
+      }*/
+      return countTurn
     }
 
-    })
   }
+
+  for(let i=0; i<tarjetas.length ; i++ ){
+    tarjetas[i].addEventListener("click",function () {
+      return flipCards(tarjetas[i]);
+      });
+    
+  }
+
+
+ 
+
+ 
+  
+ 
 }
-export default createCards; shuffle;
+
+export default createCards;
 
 
 //console.log(createCards())
+
+/*function () {
+  return filpCards(tarjetas[i]);
+  }*/
+
+   /*barajar.addEventListener("click", ()=>{
+      tarjetas[i].removeEventListener("click",flipCards)
+    } )*/
+  
