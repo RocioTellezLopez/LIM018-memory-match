@@ -1,8 +1,7 @@
 import createCards from './components/App.js';
+import startCounter from './components/timer.js';
 
-
-createCards();
-//document.getElementById('root').appendChild(App());
+document.getElementById('table').appendChild(createCards());
 
 //INPUT
 const player = document.getElementById("player")
@@ -20,6 +19,7 @@ const secondPage = document.getElementById("second")
 const game = document.getElementById("game")
 
 vamos.addEventListener("click", () => {
+    //event.preventDefault();
     player.textContent= `Hola ${nombre.value} !`
     container.className = "disabled";
     secondPage.className= "enabled";
@@ -29,9 +29,13 @@ vamos.addEventListener("click", () => {
 jugar.addEventListener("click", ()=>{
     secondPage.className= "disabled";
     game.className="enabled";
+    startCounter();
 })
-
+/*
 volver.addEventListener("click", ()=>{
     location.reload();
 })
+*/
+
+
 

@@ -1,17 +1,13 @@
 let segundos = 60 ;
 let intervaloTiempo = 0;
 
-const timer = document.getElementById("timer")
-const mensaje = document.getElementById("mensaje")
+const timer = document.getElementById("timer");
 
 const createTimer = () => {
     if (segundos === 0){
         stopCounter();
         setTimeout(function(){
-            const perdiste = document.createElement ("div");
-            perdiste.className = "perdedor";
-            mensaje.appendChild(perdiste);
-           perdiste.textContent = " INTÉNTALO OTRA VEZ";
+            
         }
         ,1000);
     }
@@ -28,18 +24,13 @@ const createTimer = () => {
     return timer
 }
 
-const jugar = document.getElementById("play")
 const startCounter =() =>{
     intervaloTiempo = setInterval(createTimer,1000);
-
 }
 
 const stopCounter =() =>{
     clearInterval(intervaloTiempo);
 }
 
-if (jugar){
-    jugar.addEventListener('click', startCounter);
-}
-
+export default startCounter;
 
