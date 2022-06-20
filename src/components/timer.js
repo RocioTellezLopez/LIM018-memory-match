@@ -8,7 +8,7 @@ const mensaje = document.getElementById("mensaje")
 const modalContainer = document.getElementById("modalContainer")
 
 const createTimer = () => {
-    if (segundos === 0  ){
+    if (segundos === 0){
         stopCounter();
         setTimeout(function(){
             modalContainer.style.opacity = "1";

@@ -40,7 +40,7 @@ function shuffle (dobleitems){    // Función para barajar cartas y desordenarla
   return dobleitems.sort(()=>{return Math.random()-0.5})  //utilizamos sort para desordenar los 18 items mediante el método math.random
 }
 
-const createCards = () => {
+function createCards (){
   const areaCarta = document.getElementById("areaCarta");
 
   shuffle(dobleitems).forEach(function(item){
@@ -71,81 +71,81 @@ const createCards = () => {
     tarjeta.appendChild(caraSuperior);
 
   });
+}
 
-  const tarjetas = document.querySelectorAll(".tarjeta");
- 
-  
-  //console.log(e.currentTarget.dataset.pokemonid)
-  
-  const flipCards = function (tarjetas) {
-    tarjetas.style.transform = "rotateY(180deg)";
-    selecciones.push(tarjetas);
-    const selectLength= selecciones.length
-    
+createCards()
+
+//const tarjetas = document.querySelectorAll(".tarjeta");
+//console.log(e.currentTarget.dataset.pokemonid)
+const tarjetas = createCards();
+console.log(tarjetas)
+const flipCards = function () {
+  tarjetas.style.transform = "rotateY(180deg)";
+  selecciones.push(tarjetas);
+  const selectLength= selecciones.length
     if (selectLength == 2){
     deseleccionar(selecciones);
     winner(selecciones);
     counterTurns();
     
       selecciones = [];
+      
     }
-
-    function deseleccionar(selecciones) {
-      setTimeout(()=> {
-          if (selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
-            selecciones[0].style.transform = "rotateY(0deg)";
-            selecciones[1].style.transform = "rotateY(0deg)";
-          }
-        },1100);
-      }
-
-    function winner(selecciones){
-      if (selecciones[0].dataset.pokemonid == selecciones[1].dataset.pokemonid){
-        score +=100
-        puntaje.innerHTML = `${score}`
-        if(score == 900) {
-          modalContainer.style.opacity = "1";
-          modalContainer.style.visibility ="visible";
-          const win = document.createElement ("div");
-          win.className = "ganador"
-          win.textContent = "Ganaste"
-          mensaje.appendChild(win);
-          createMedals(countTurn)
-        }
-        if (score < 900 ){
-         createTimer();
-      }
-      }
-    }
-
-    function counterTurns(){
-      //console.log(selecciones)
-      countTurn++
-      turn.innerHTML = `${countTurn}`
-      /*if(selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
-        console.log(countTurn)
-      }*/
-      return countTurn
-    }
-
-  }
-
-  for(let i=0; i<tarjetas.length ; i++ ){
-    tarjetas[i].addEventListener("click",function () {
-      return flipCards(tarjetas[i]);
-      });
-    
-  }
-
-
- 
-
- 
-  
- 
 }
 
+function deseleccionar(selecciones) {
+  setTimeout(()=> {
+      if (selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
+        selecciones[0].style.transform = "rotateY(0deg)";
+        selecciones[1].style.transform = "rotateY(0deg)";
+      }
+    },1100);
+}
+function winner(selecciones){
+  if (selecciones[0].dataset.pokemonid == selecciones[1].dataset.pokemonid){
+    score +=100
+    puntaje.innerHTML = `${score}`
+    if(score == 900) {
+      modalContainer.style.opacity = "1";
+      modalContainer.style.visibility ="visible";
+      const win = document.createElement ("div");
+      win.className = "ganador"
+      win.textContent = "Ganaste"
+      mensaje.appendChild(win);
+      createMedals(countTurn)
+    }
+    
+  }
+}
+function counterTurns(){
+  //console.log(selecciones)
+  countTurn++
+  turn.innerHTML = `${countTurn}`
+  /*if(selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
+    console.log(countTurn)
+  }*/
+  return countTurn
+}
+
+
+/*for(let i=0; i<tarjetas.length; i++ ){
+  tarjetas[i].addEventListener("click",function () {
+    return flipCards(tarjetas[i]);
+    });
+}
+
+
+*/
+
+
+
+
+
+
 export default createCards;
+
+
+
 
 
 //console.log(createCards())
