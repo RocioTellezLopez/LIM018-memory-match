@@ -6,10 +6,6 @@ const timer = document.getElementById("timer");
 const createTimer = () => {
     if (segundos === 0){
         stopCounter();
-        setTimeout(function(){
-            
-        }
-        ,1000);
     }
     let minutes= Math.floor(segundos/60);
     let secons =segundos - (minutes*60);

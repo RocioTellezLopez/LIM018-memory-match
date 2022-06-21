@@ -106,6 +106,7 @@ function winner(selection){
         win.className = "ganador"
         win.textContent = "Ganaste"
         mensaje.appendChild(win);
+        stopCounter();
       } else if (score < 900 && segundos === 0){
         const perdiste = document.createElement ("div");
         perdiste.className = "perdedor"
@@ -130,7 +131,7 @@ function winner(selection){
 //console.log(e.currentTarget.dataset.pokemonid)
 
 export default createCards;
-
+/*
 function winner(selecciones){
   if (selecciones[0].dataset.pokemonid == selecciones[1].dataset.pokemonid){
     score +=100
@@ -147,7 +148,7 @@ function winner(selecciones){
     
   }
 }
-
+*/
 
 
 
