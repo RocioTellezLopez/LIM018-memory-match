@@ -1,8 +1,8 @@
-import App from './App.js';
+import createCards from './App.js';
 
-describe('App', () => {
+describe('createCards', () => {
   it('should render without crashing', () => {
-    const el = App();
+    const el = createCards();
     expect(el instanceof HTMLElement).toBe(true);
   });
 });

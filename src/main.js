@@ -1,9 +1,7 @@
 import createCards from './components/App.js';
-import  startCounter from './components/timer.js'
+import  {startCounter} from './components/timer.js'
 
-
-createCards();
-//document.getElementById('root').appendChild(App());
+document.getElementById('table').appendChild(createCards());
 
 //INPUT
 const player = document.getElementById("player")
@@ -32,11 +30,11 @@ jugar.addEventListener("click",()=>{
     secondPage.className= "disabled";
     game.className="enabled";
     startCounter();
-    
-    
 })
 
 volver.addEventListener("click", ()=>{
     location.reload();
+
 })
+
 

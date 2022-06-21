@@ -13,43 +13,45 @@
 //
 
 import data from '../data/pokemon/pokemon.js';
-import  createTimer from '../components/timer.js';
-import  '../components/medallas.js';
+import {stopCounter} from './timer.js';
+
 import  createMedals from './medallas.js'
 
-//console.log(data);
 
-const itemsPokemon = data.items;
-const dobleitems = [];
-const mensaje = document.getElementById("mensaje");
-const puntaje = document.getElementById("puntos");
-const turn = document.getElementById("turnos");
-const modalContainer = document.getElementById("modalContainer");
-let selecciones =[];
+
 let score = 0;
 let countTurn = 0;
+const puntaje = document.getElementById("puntos");
+const mensaje = document.getElementById("mensaje");
+const turn = document.getElementById("turnos");
+const modalContainer = document.getElementById("modalContainer")
 
-//const barajar = document.getElementById("barajar");
 
+const itemsPokemon = [...data.items, ...data.items];
+console.log(itemsPokemon)
 
-  for(let i=0; i<itemsPokemon.length ; i++ ){
-    dobleitems.push (itemsPokemon[i], itemsPokemon[i]);
-  }
-
-function shuffle (dobleitems){    // Función para barajar cartas y desordenarlas
-  return dobleitems.sort(()=>{return Math.random()-0.5})  //utilizamos sort para desordenar los 18 items mediante el método math.random
+//const dobleitems = [...itemsPokemon, ...itemsPokemon];
+//console.log(dobleitems)
+ 
+function shuffle (array){    // Función para barajar cartas y desordenarlas
+  const sortedArray = array.sort(()=>{return Math.random()-0.5});//utilizamos sort para desordenar los 18 items mediante el método math.random
+  return [...sortedArray]
 }
 
-function createCards (){
-  const areaCarta = document.getElementById("areaCarta");
+const sortedPokemon = shuffle(itemsPokemon);
+console.log(sortedPokemon)
 
-  shuffle(dobleitems).forEach(function(item){
+
+const createCards = () => {
+  const areaCarta = document.createElement('div');
+  areaCarta.className = "areaCarta";
+
+  sortedPokemon.forEach(item => {
     //Creando div "tarjeta"
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta";
     tarjeta.setAttribute("data-pokemonid",`${item.id}`);
-    areaCarta.appendChild(tarjeta);
-
+  
     //Creando div "cara posterior"
     const caraPosterior = document.createElement("div");
     caraPosterior.className = "cara posterior";
@@ -69,30 +71,34 @@ function createCards (){
 
     tarjeta.appendChild(caraPosterior);
     tarjeta.appendChild(caraSuperior);
+    areaCarta.appendChild(tarjeta);
 
+    tarjeta.addEventListener("click",flipCards)
   });
+  
+  return areaCarta
+
 }
 
-createCards()
 
-//const tarjetas = document.querySelectorAll(".tarjeta");
+//console.log(theTarget);
+let selection =[];
+function flipCards (e) {
+  e.currentTarget.style.transform = "rotateY(180deg)";
+  console.log(e.currentTarget)
+  selection.push(e.currentTarget);
+  const selectLength= selection.length
+  
+  if (selectLength == 2){
+  deseleccionar(selection);
+  winner(selection);
+  counterTurns(selection);
+ 
+  selection = [];
+  }
+}
+
 //console.log(e.currentTarget.dataset.pokemonid)
-const tarjetas = createCards();
-console.log(tarjetas)
-const flipCards = function () {
-  tarjetas.style.transform = "rotateY(180deg)";
-  selecciones.push(tarjetas);
-  const selectLength= selecciones.length
-    if (selectLength == 2){
-    deseleccionar(selecciones);
-    winner(selecciones);
-    counterTurns();
-    
-      selecciones = [];
-      
-    }
-}
-
 function deseleccionar(selecciones) {
   setTimeout(()=> {
       if (selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
@@ -101,6 +107,7 @@ function deseleccionar(selecciones) {
       }
     },1100);
 }
+
 function winner(selecciones){
   if (selecciones[0].dataset.pokemonid == selecciones[1].dataset.pokemonid){
     score +=100
@@ -113,48 +120,26 @@ function winner(selecciones){
       win.textContent = "Ganaste"
       mensaje.appendChild(win);
       createMedals(countTurn)
+      stopCounter()
     }
     
   }
 }
+
 function counterTurns(){
-  //console.log(selecciones)
   countTurn++
   turn.innerHTML = `${countTurn}`
-  /*if(selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
-    console.log(countTurn)
-  }*/
   return countTurn
 }
 
+/*function loser (){
+  if(segundos == 0 && score < 900){
+    const perdiste = document.createElement ("div");
+        perdiste.className = "perdedor"
+        perdiste.textContent = " INTÉNTALO OTRA VEZ";
+        mensaje.appendChild(perdiste);
+  }
 
-/*for(let i=0; i<tarjetas.length; i++ ){
-  tarjetas[i].addEventListener("click",function () {
-    return flipCards(tarjetas[i]);
-    });
 }
-
-
 */
-
-
-
-
-
-
 export default createCards;
-
-
-
-
-
-//console.log(createCards())
-
-/*function () {
-  return filpCards(tarjetas[i]);
-  }*/
-
-   /*barajar.addEventListener("click", ()=>{
-      tarjetas[i].removeEventListener("click",flipCards)
-    } )*/
-  
