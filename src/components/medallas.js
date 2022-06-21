@@ -8,17 +8,17 @@ const resultado = document.getElementById("resultado")
      resultado.appendChild(medallas)
      if(points <= 20){
          const imagenOro = document.createElement ("img")
-         imagenOro.src= "/src/img/medalla-de-oro.png"
+         imagenOro.src= "./img/medalla-de-oro.png"
          medallas.appendChild(imagenOro)
     
         } else if (points > 20 && points <= 30 ) {
             const imagenPlata = document.createElement ("img")
-            imagenPlata.src= "/src/img/medalla-de-plata.png"
+            imagenPlata.src= "./img/medalla-de-plata.png"
             medallas.appendChild(imagenPlata)
           
         } else {
             const imagenBronce = document.createElement ("img")
-            imagenBronce.src= "/src/img/medalla-de-bronce.png"
+            imagenBronce.src= "./img/medalla-de-bronce.png"
             medallas.appendChild(imagenBronce)
           
         }

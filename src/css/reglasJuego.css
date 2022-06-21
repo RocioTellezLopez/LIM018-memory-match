@@ -16,7 +16,7 @@
 .secondPage {
     display: flex;
     justify-content: center;
-    margin: 4rem;
+    padding: 4rem;
     
 }
  .rules {

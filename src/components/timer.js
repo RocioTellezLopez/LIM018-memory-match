@@ -1,5 +1,5 @@
 
-let segundos = 120 ;
+let segundos = 250 ;
 let intervaloTiempo = 0;
 
 const timer = document.getElementById("timer")
@@ -11,14 +11,14 @@ const createTimer = () => {
         if (segundos === 0){
             stopCounter();
             setTimeout(() =>{
-                modalContainer.style.opacity = "1";
+                  modalContainer.style.opacity = "1";
                   modalContainer.style.visibility ="visible";
                   const perdiste = document.createElement ("div");
                   perdiste.className = "perdedor"
                   perdiste.textContent = " INTÉNTALO OTRA VEZ";
                   mensaje.appendChild(perdiste);
                   const imagenLoser = document.createElement ("img")
-                  imagenLoser.src= "/src/img/llorar.png"
+                  imagenLoser.src= "./img/llorar.png"
                   resultado.appendChild(imagenLoser)
 
             },1000)
