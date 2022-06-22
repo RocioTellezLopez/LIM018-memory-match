@@ -1,5 +1,5 @@
 
-let segundos = 120 ;
+let segundos = 250 ;
 let intervaloTiempo = 0;
 
 const timer = document.getElementById("timer")
