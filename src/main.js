@@ -1,5 +1,5 @@
-import createCards from './components/App.js';
-import startCounter from './components/timer.js';
+import {createCards} from './components/App.js';
+import  {startCounter} from './components/timer.js'
 
 document.getElementById('table').appendChild(createCards());
 
@@ -26,16 +26,15 @@ vamos.addEventListener("click", () => {
     
 });
 
-jugar.addEventListener("click", ()=>{
+jugar.addEventListener("click",()=>{
     secondPage.className= "disabled";
     game.className="enabled";
     startCounter();
 })
-/*
+
 volver.addEventListener("click", ()=>{
     location.reload();
-})
-*/
 
+})
 
 
