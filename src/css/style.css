@@ -20,21 +20,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 40rem;
+  
     
     
 }
 .containerImg {
-    position: relative;
-    height: 100%;
+    background-image: url(../img/BIENVENIDA-FONDO\ 1.png);
+    height: 100vh;
+ background-position-x: center;
+    background-repeat: no-repeat;
 }
 
 .welcome {
-    position: absolute;
-    bottom: 0;
-    top:50%;
-    left: 25%;
+  
     display: flex;
     width: 31.25rem;
     flex-direction: column;
@@ -45,7 +43,7 @@ body {
 
 h1{
     font-family: 'Luckiest Guy', cursive;
-    font-size: 55px;
+    font-size: 3.43rem;
     color: #591818;
     margin: 0;
     text-shadow: 0px 4px 4px rgba(249, 242, 242, 0.75);
@@ -57,12 +55,12 @@ button {
     border-radius: 10px;
     cursor: pointer;
     color: #FFFFFf;
-    padding-inline: 45px ;
-    padding-block: 8px;
+    padding-inline: 2.8rem ;
+    padding-block: 0.5rem;
     font-family: Luckiest Guy;
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: 25rem;
+    font-size: 1rem;
     box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.74);
     margin: 1rem;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
