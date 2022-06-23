@@ -1,4 +1,4 @@
-import createCards from './components/App.js';
+import {createCards} from './components/App.js';
 import  {startCounter} from './components/timer.js'
 
 document.getElementById('table').appendChild(createCards());

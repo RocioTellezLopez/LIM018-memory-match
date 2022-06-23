@@ -14,9 +14,7 @@
 
 import data from '../data/pokemon/pokemon.js';
 import {stopCounter} from './timer.js';
-
 import  createMedals from './medallas.js'
-
 
 
 let score = 0;
@@ -28,18 +26,17 @@ const modalContainer = document.getElementById("modalContainer")
 
 
 const itemsPokemon = [...data.items, ...data.items];
-console.log(itemsPokemon)
+//console.log(itemsPokemon)
 
 //const dobleitems = [...itemsPokemon, ...itemsPokemon];
 //console.log(dobleitems)
  
 function shuffle (array){    // Función para barajar cartas y desordenarlas
-  const sortedArray = array.sort(()=>{return Math.random()-0.5});//utilizamos sort para desordenar los 18 items mediante el método math.random
-  return [...sortedArray]
+  return array.sort(()=>{return Math.random()-0.5});//utilizamos sort para desordenar los 18 items mediante el método math.random
 }
 
 const sortedPokemon = shuffle(itemsPokemon);
-console.log(sortedPokemon)
+//console.log(sortedPokemon)
 
 
 const createCards = () => {
@@ -73,7 +70,7 @@ const createCards = () => {
     tarjeta.appendChild(caraSuperior);
     areaCarta.appendChild(tarjeta);
 
-    tarjeta.addEventListener("click",flipCards)
+    tarjeta.addEventListener("click",flipCards);
   });
   
   return areaCarta
@@ -81,35 +78,33 @@ const createCards = () => {
 }
 
 
-//console.log(theTarget);
 let selection =[];
 function flipCards (e) {
   e.currentTarget.style.transform = "rotateY(180deg)";
-  console.log(e.currentTarget)
   selection.push(e.currentTarget);
+  //console.log(selection)
   const selectLength= selection.length
   
   if (selectLength == 2){
-  deseleccionar(selection);
-  winner(selection);
-  counterTurns(selection);
+    winner(selection);
+    deseleccionar(selection);
+    counterTurns();
  
-  selection = [];
+    selection = [];
   }
 }
 
-//console.log(e.currentTarget.dataset.pokemonid)
-function deseleccionar(selecciones) {
-  setTimeout(()=> {
-      if (selecciones[0].dataset.pokemonid != selecciones[1].dataset.pokemonid){
-        selecciones[0].style.transform = "rotateY(0deg)";
-        selecciones[1].style.transform = "rotateY(0deg)";
-      }
-    },1100);
+function deseleccionar(selection) {
+    setTimeout(()=> {
+        if (selection[0].dataset.pokemonid != selection[1].dataset.pokemonid){
+          selection[0].style.transform = "rotateY(0deg)";
+          selection[1].style.transform = "rotateY(0deg)";
+        }
+      },1100);
 }
-
-function winner(selecciones){
-  if (selecciones[0].dataset.pokemonid == selecciones[1].dataset.pokemonid){
+  
+function winner(selection){
+  if (selection[0].dataset.pokemonid == selection[1].dataset.pokemonid){
     score +=100
     puntaje.innerHTML = `${score}`
     if(score == 900) {
@@ -122,24 +117,21 @@ function winner(selecciones){
       createMedals(countTurn)
       stopCounter()
     }
-    
+
   }
 }
-
+  
 function counterTurns(){
-  countTurn++
-  turn.innerHTML = `${countTurn}`
-  return countTurn
-}
-
-/*function loser (){
-  if(segundos == 0 && score < 900){
-    const perdiste = document.createElement ("div");
-        perdiste.className = "perdedor"
-        perdiste.textContent = " INTÉNTALO OTRA VEZ";
-        mensaje.appendChild(perdiste);
+  if (selection.length == 2){
+    countTurn++
+    turn.innerHTML = `${countTurn}`
   }
-
+return countTurn
 }
-*/
-export default createCards;
+
+
+//console.log(e.currentTarget.dataset.pokemonid)
+
+export {createCards, shuffle,winner};
+
+

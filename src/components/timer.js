@@ -27,11 +27,11 @@ const createTimer = () => {
     let secons =segundos - (minutes*60);
     /*Si los segundos son menores a 10
     nos aseguramos que quede en formato 0:00*/
-        if (secons < 10){
-            secons = '0'+secons;
-        }
+    if (secons < 10){
+        secons = '0'+secons;
+    }
     const textTimer= minutes + ':' + secons;
-    timer.innerText = textTimer;
+    timer.innerHTML = textTimer;
     segundos --;
     return timer
 }
@@ -45,6 +45,6 @@ const stopCounter =() =>{
     clearInterval(intervaloTiempo);
 }
 
-export {startCounter,stopCounter};
+export {createTimer,startCounter,stopCounter};
 
 
