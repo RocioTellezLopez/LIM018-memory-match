@@ -68,7 +68,7 @@
     max-height: 5rem;
 }
 
-@media screen and (max-width :400px) {
+@media screen and (max-width :450px) {
     .areaCarta {
         display: grid;
         grid-template-columns: repeat(3,minmax(6rem , 1fr) );
