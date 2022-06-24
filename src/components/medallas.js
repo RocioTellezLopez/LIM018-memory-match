@@ -1,11 +1,8 @@
 
-
-const resultado = document.getElementById("resultado")
-
  const createMedals = (points) => {
      const medallas = document.createElement ("div")
      medallas.className ="medallas"
-     resultado.appendChild(medallas)
+
      if(points <= 20){
          const imagenOro = document.createElement ("img")
          imagenOro.src= "./img/medalla-de-oro.png"
@@ -20,9 +17,8 @@ const resultado = document.getElementById("resultado")
             const imagenBronce = document.createElement ("img")
             imagenBronce.src= "./img/medalla-de-bronce.png"
             medallas.appendChild(imagenBronce)
-          
         }
-        
+    return medallas    
  } 
 
 export default createMedals;

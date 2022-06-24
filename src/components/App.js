@@ -22,7 +22,8 @@ let countTurn = 0;
 const puntaje = document.getElementById("puntos");
 const mensaje = document.getElementById("mensaje");
 const turn = document.getElementById("turnos");
-const modalContainer = document.getElementById("modalContainer")
+const modalContainer = document.getElementById("modalContainer");
+const resultado = document.getElementById("resultado");
 
 
 const itemsPokemon = [...data.items, ...data.items];
@@ -114,7 +115,7 @@ function winner(selection){
       win.className = "ganador"
       win.textContent = "Ganaste"
       mensaje.appendChild(win);
-      createMedals(countTurn)
+      resultado.appendChild(createMedals(countTurn));
       stopCounter()
     }
 
