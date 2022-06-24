@@ -37,7 +37,9 @@ const createTimer = (timer) => {
 }
 
 const startCounter =() =>{
-    intervaloTiempo = setInterval(createTimer(timer),600);
+    intervaloTiempo = setInterval(()=>{
+        createTimer(timer)
+    },600);
 
 }
 

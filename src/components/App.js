@@ -37,7 +37,6 @@ function shuffle (array){    // Función para barajar cartas y desordenarlas
 
 const sortedPokemon = shuffle(itemsPokemon);
 //console.log(sortedPokemon)
-const selection = []
 
 
 const createCards = () => {
@@ -71,9 +70,7 @@ const createCards = () => {
     tarjeta.appendChild(caraSuperior);
     areaCarta.appendChild(tarjeta);
 
-    tarjeta.addEventListener("click", (event)=>{
-      flipCards(event, selection)
-    });
+    tarjeta.addEventListener("click",  flipCards);
   });
   
   return areaCarta
@@ -81,20 +78,19 @@ const createCards = () => {
 }
 
 
-//let selection =[];
-function flipCards (e, selection) {
-  console.log(e,selection)
+let selection =[];
+function flipCards (e) {
   e.currentTarget.style.transform = "rotateY(180deg)";
   selection.push(e.currentTarget);
-  //console.log(selection)
   const selectLength = selection.length
   
-  if (selectLength === 2){
+  if (selectLength == 2){
     winner(selection);
     deseleccionar(selection);
     counterTurns(selection);
- 
-    selection = [];
+  }
+  if(selection.length ==  2 ) {
+    selection = []
   }
 }
 
