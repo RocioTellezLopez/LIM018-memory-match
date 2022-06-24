@@ -1,4 +1,4 @@
-import { createCards,shuffle, flipCards } from './App.js';
+import { createCards,shuffle} from './App.js';
 import {createTimer} from './timer.js'
 import { fireEvent } from '@testing-library/react';
 
@@ -45,33 +45,5 @@ describe('createTimer', () => {
   });
 });
 
-describe('flipCards', () => {
-  it('should be a function', () => {
-    expect(typeof flipCards).toBe('function');
-  });
-  it('al ejecutar la funcion flipCards se almacena un valor en un array ', () => {
-    const selectCards = []
-    const tarjeta = document.createElement("div");
-    //flipCards(fireEvent.click(tarjeta))
-    //flipCards(fireEvent.click(tarjeta))
-    tarjeta.addEventListener("click", (event)=> {
-      flipCards(event,selectCards)
-    });
-    fireEvent.click(tarjeta)
-    console.log(selectCards)
-    //fireEvent.click(tarjeta)
-    expect(selectCards.length).toBe(1);
-  });
-});
 
-/*document.body.innerHTML = '<p id="timer"></p>';
 
-it('should create the time count', async () => {
-
-  const {createTimer} = await import('./timer.js');
-  expect {createTimer('2:00')}.toBe('1:59');
-
-  const timer = document.getElementById("timer")
-
-  expect( timer.innerHTML).toBe('<p id="timer">1:59</p>');
-});*/
