@@ -37,6 +37,7 @@ function shuffle (array){    // Función para barajar cartas y desordenarlas
 
 const sortedPokemon = shuffle(itemsPokemon);
 //console.log(sortedPokemon)
+const selection = []
 
 
 const createCards = () => {
@@ -70,7 +71,9 @@ const createCards = () => {
     tarjeta.appendChild(caraSuperior);
     areaCarta.appendChild(tarjeta);
 
-    tarjeta.addEventListener("click",flipCards);
+    tarjeta.addEventListener("click", (event)=>{
+      flipCards(event, selection)
+    });
   });
   
   return areaCarta
@@ -78,23 +81,25 @@ const createCards = () => {
 }
 
 
-let selection =[];
-function flipCards (e) {
+//let selection =[];
+function flipCards (e, selection) {
+  console.log(e,selection)
   e.currentTarget.style.transform = "rotateY(180deg)";
   selection.push(e.currentTarget);
   //console.log(selection)
-  const selectLength= selection.length
+  const selectLength = selection.length
   
-  if (selectLength == 2){
+  if (selectLength === 2){
     winner(selection);
     deseleccionar(selection);
-    counterTurns();
+    counterTurns(selection);
  
     selection = [];
   }
 }
 
 function deseleccionar(selection) {
+  console.log(selection)
     setTimeout(()=> {
         if (selection[0].dataset.pokemonid != selection[1].dataset.pokemonid){
           selection[0].style.transform = "rotateY(0deg)";
@@ -121,7 +126,7 @@ function winner(selection){
   }
 }
   
-function counterTurns(){
+function counterTurns(selection){
   if (selection.length == 2){
     countTurn++
     turn.innerHTML = `${countTurn}`
@@ -132,6 +137,6 @@ return countTurn
 
 //console.log(e.currentTarget.dataset.pokemonid)
 
-export {createCards, shuffle,winner};
+export {createCards, shuffle,winner, flipCards};
 
 

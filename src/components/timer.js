@@ -7,7 +7,7 @@ const modalContainer = document.getElementById("modalContainer")
 const mensaje = document.getElementById("mensaje")
 const resultado = document.getElementById("resultado")
 
-const createTimer = () => {
+const createTimer = (timer) => {
         if (segundos === 0){
             stopCounter();
             setTimeout(() =>{
@@ -37,7 +37,7 @@ const createTimer = () => {
 }
 
 const startCounter =() =>{
-    intervaloTiempo = setInterval(createTimer,600);
+    intervaloTiempo = setInterval(createTimer(timer),600);
 
 }
 
