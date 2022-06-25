@@ -3,6 +3,7 @@ import  {startCounter} from './components/timer.js'
 
 document.getElementById('table').appendChild(createCards());
 
+
 //INPUT
 const player = document.getElementById("player")
 const nombre = document.getElementById("nombre")

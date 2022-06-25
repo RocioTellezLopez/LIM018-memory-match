@@ -13,7 +13,7 @@ describe('createTimer', () => {
   });
 
 })
-/*
+
 jest.useFakeTimers();
 //jest.spyOn(global, 'setInterval');
 
@@ -24,7 +24,7 @@ test('waits 1 second before start the game', () => {
   expect(setInterval).toHaveBeenCalledTimes(1);
   expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 });
-*/
+
 
 /*describe('starCounter', () => {
     it('', () => {

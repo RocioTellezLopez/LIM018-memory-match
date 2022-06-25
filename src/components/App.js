@@ -25,9 +25,7 @@ const turn = document.getElementById("turnos");
 const modalContainer = document.getElementById("modalContainer");
 const resultado = document.getElementById("resultado");
 
-
 const itemsPokemon = [...data.items, ...data.items];
-//console.log(itemsPokemon)
 
 //const dobleitems = [...itemsPokemon, ...itemsPokemon];
 //console.log(dobleitems)
@@ -89,19 +87,20 @@ function flipCards (e) {
   if (selectLength == 2){
     winner(selection);
     deseleccionar(selection);
-    counterTurns();
+    counterTurns(selectLength);
  
     selection = [];
   }
 }
 
+
 function deseleccionar(selection) {
-    setTimeout(()=> {
-        if (selection[0].dataset.pokemonid != selection[1].dataset.pokemonid){
-          selection[0].style.transform = "rotateY(0deg)";
-          selection[1].style.transform = "rotateY(0deg)";
-        }
-      },1100);
+    setTimeout(()=>{
+      if (selection[0].dataset.pokemonid != selection[1].dataset.pokemonid){
+        selection[0].style.transform = "rotateY(0deg)";
+        selection[1].style.transform = "rotateY(0deg)";
+      }
+    },1100);
 }
   
 function winner(selection){
@@ -130,9 +129,21 @@ function counterTurns(){
 return countTurn
 }
 
+function createLoser (){
+  modalContainer.style.opacity = "1";
+  modalContainer.style.visibility ="visible";
+  const perdiste = document.createElement ("div");
+  perdiste.className = "perdedor"
+  perdiste.textContent = " INTÉNTALO OTRA VEZ";
+  mensaje.appendChild(perdiste);
+  const imagenLoser = document.createElement ("img")
+  imagenLoser.src= "./img/llorar.png"
+  resultado.appendChild(imagenLoser)
+}
+
 
 //console.log(e.currentTarget.dataset.pokemonid)
 
-export {createCards, shuffle,winner};
+export {createCards, shuffle,winner,createLoser};
 
 
