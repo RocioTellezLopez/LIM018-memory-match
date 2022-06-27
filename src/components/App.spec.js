@@ -1,18 +1,15 @@
-import {createCards,shuffle,deseleccionar,winner} from './App.js';
+import {createCards,shuffle,deselect,winner} from './App.js';
 import createMedals from './medals.js';
 
-[{dataset: {pokemonid: 'charmander'}},{dataset: {pokemonid: 'charmander'}}]
-
-
 describe('createCards', () => {
-  const areaCarta = createCards();
+  const cardArea = createCards();
 
   it('should render without crashing', () => {
-    expect(areaCarta instanceof HTMLElement).toBe(true);
+    expect(cardArea instanceof HTMLElement).toBe(true);
   });
 
   it('should create 18 elements with .tarjeta class', () => {
-    expect(areaCarta.querySelectorAll('.tarjeta').length).toBe(18);
+    expect(cardArea.querySelectorAll('.tarjeta').length).toBe(18);
   } );
 
 });
@@ -23,26 +20,21 @@ describe('shuffle', () => {
     expect(shuffle([1,2,3]).length).toBe(3);
   });
 
-  it('the inicial oreder of ana array not to be equal after shuffle function execution', ()=>{
+  it('the inicial oreder of an array not to be equal after shuffle function execution', ()=>{
     const initialValue = [0,1,2,3,4];
     const random = shuffle([...initialValue]);
     expect(random).not.toBe(initialValue);
   });
 });
 
-describe('deseleccionar', ()=>{
+describe('deselect', ()=>{
   let array = [{dataset: {pokemonid: 'charmander'}},{dataset: {pokemonid: 'venasaur'}}];
 
   it('should recognize if 2 elements have different id',()=>{
-    deseleccionar(array);
+    deselect(array);
     expect(array[0]).not.toEqual(array[1]);
   })
 
-  it('que el orden inicial de un array no sea igual luego de ejecutar la funcion shuffle ', ()=>{
-    const valorInicial = [0,1,2,3,4]
-    const aletorio = shuffle([...valorInicial])
-    expect(aletorio).not.toBe(valorInicial)
-  })
 });
 
 describe('winner', ()=>{

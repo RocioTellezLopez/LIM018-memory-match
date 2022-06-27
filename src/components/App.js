@@ -138,6 +138,6 @@ function createLoser() {
 
 //console.log(e.currentTarget.dataset.pokemonid)
 
-export { createCards, shuffle, winner, createLoser };
+export { createCards, shuffle, winner, createLoser,deselect };
 
 
