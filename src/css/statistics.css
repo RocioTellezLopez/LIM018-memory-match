@@ -1,38 +1,28 @@
-.estadisticas {
+.statistics {
     display: flex;
     justify-content: space-around;
     
 }
 
-.principales {
+.main {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
-.movimientos {
-    font-size: 2rem;
-    
-}
-
-h6 {
-    margin-block: 2rem;
-    font-family: Roboto;
-}
-
-.estadisticas img {
+.statistics img {
     width: 3.5rem;
     height: 3.5rem;
     margin: 2rem;
 }
 
-.puntaje, .vidas, .tiempo {
+.theScore, .lives, .time {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.mensaje {
+.message {
     font-family: 'Luckiest Guy';
     font-weight: 400;
     font-size: 3rem;
@@ -44,7 +34,7 @@ h6 {
 }
 
 @media screen and (max-width : 400px) {
-    .estadisticas img {
+    .statistics img {
         width: 2.5rem;
         height: 2.5rem;
         margin: 0.5rem;

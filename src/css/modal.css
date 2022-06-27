@@ -31,35 +31,33 @@
     width: 30%;
 }
 
-.resultado {
+.result {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     gap:2rem;
 }
 
-.botones {
+.backButton {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-block-start: 1rem;
 }
 
-.cohete {
+.rocket {
     max-width: 6.5rem;
     max-height: 6.5rem;
 }
 
-.perdedor , .ganador {
+.loser , .winner {
     font-size: 2.5rem;
     max-width: 12rem;
     color: #FAED7C;
     
 }
 
-
-
-.medallas {
+.medals {
     display: flex;
     justify-content: center;
     align-items: center;

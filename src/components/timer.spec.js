@@ -1,4 +1,4 @@
-import { createTimer } from "./timer";
+import {createTimer} from "./timer";
 
 describe('createTimer', () => {
   const root = document.body;
@@ -15,8 +15,8 @@ describe('createTimer', () => {
 
 })
 
-/*jest.useFakeTimers();
-//jest.spyOn(global, 'setTimeout');
+jest.useFakeTimers();
+//jest.spyOn(global, 'setInterval');
 
 test('waits 1 second before ending the game', () => {
   const timerGame = require('../timerGame');
@@ -24,7 +24,7 @@ test('waits 1 second before ending the game', () => {
 
   expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
-});*/
+});
 
 /*describe('starCounter', () => {
     it('', () => {

@@ -1,16 +1,17 @@
-import {createCards} from './components/App.js';
-import  {startCounter} from './components/timer.js'
+import { createCards } from './components/App.js';
+import { startCounter } from './components/timer.js'
 
 document.getElementById('table').appendChild(createCards());
 
+
 //INPUT
 const player = document.getElementById("player")
-const nombre = document.getElementById("nombre")
+const playerName = document.getElementById("playerName")
 
 //BOTONES
-const vamos = document.getElementById("button")
-const jugar = document.getElementById("play")
-const volver = document.getElementById("back")
+const go = document.getElementById("button")
+const play = document.getElementById("play")
+const back = document.getElementById("backB")
 
 
 //SECCIONES DE PAGINA
@@ -18,23 +19,21 @@ const container = document.getElementById("container")
 const secondPage = document.getElementById("second")
 const game = document.getElementById("game")
 
-vamos.addEventListener("click", () => {
-    //event.preventDefault();
-    player.textContent= `Hola ${nombre.value} !`
+go.addEventListener("click", () => {
+    player.textContent = `Hola ${playerName.value} !`
     container.className = "disabled";
-    secondPage.className= "enabled";
-    
+    secondPage.className = "enabled";
+
 });
 
-jugar.addEventListener("click",()=>{
-    secondPage.className= "disabled";
-    game.className="enabled";
+play.addEventListener("click", () => {
+    secondPage.className = "disabled";
+    game.className = "enabled";
     startCounter();
 })
 
-volver.addEventListener("click", ()=>{
+back.addEventListener("click", () => {
     location.reload();
-
 })
 
 
