@@ -6,25 +6,44 @@
 
 // importo la data de webdev
 import webdev from '../data/webdev/webdev.js' 
+
+
+  //console.log(mostrarData);
+
+
+
 //
 // O alternativamente podríamos cargar el JSON de forma asíncrona usando
 // `fetch` en el momento que consideremos necesario.
-//
-// fetch('./data/pokemon/pokemon.json')
+//const App = () => {
+// fetch('./data/webdev/weddev.json')
 //   .then(resp => resp.json())
 //   .then(console.log)
 //   .catch(console.error);
-//
-
+//}
 
 
 const App = () => {
-  const el = document.createElement('div');
 
-  el.className = 'App';
+//Fiorella
+var mostrarData = webdev.items
+
+  //var dobleData = mostrarData.map(function(x){
+    //return (x + x);
+ //});
+ 
+ //var dobleData = mostrarData.slice();
+ //var dobleData = [...mostrarData];
+ //var dobleData = Array.from(mostrarData);
+ //console.log(dobleData);
+//Fiorella-Hasta Aquí
+
+  //const el = document.createElement('div');
+
+  //el.className = 'App';
   //el.textContent = 'Hola mundo!';
   //return el;
-  const divCartas = document.createElement('div')
+  /*const divCartas = document.createElement('div')
 
   divCartas.className = 'divCartas'
   el.appendChild(divCartas)
@@ -71,7 +90,7 @@ const App = () => {
     divCartas.appendChild(imgCartas)
     divCartas.appendChild(imgDoble)
   }*/
-  return el;
-};
+  //return el;
+}; 
 
 export default App;
