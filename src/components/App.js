@@ -28,6 +28,7 @@ const App = () => {
 //Fiorella
 var mostrarData = webdev.items
 
+
   //var dobleData = mostrarData.map(function(x){
     //return (x + x);
  //});
