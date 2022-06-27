@@ -9,7 +9,8 @@ describe('createTimer', () => {
   });
 
   it('should render without crashing', () => {
-    expect(createTimer() instanceof HTMLElement).toEqual(true);
+    const timer = document.createElement("div");
+    expect(createTimer(timer) instanceof HTMLElement).toEqual(true);
   });
 
 })
@@ -17,14 +18,13 @@ describe('createTimer', () => {
 jest.useFakeTimers();
 //jest.spyOn(global, 'setInterval');
 
-test('waits 1 second before start the game', () => {
-  const starCounter = require('./timer.js');
-  starCounter;
+test('waits 1 second before ending the game', () => {
+  const timerGame = require('../timerGame');
+  timerGame();
 
-  expect(setInterval).toHaveBeenCalledTimes(1);
-  expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 });
-
 
 /*describe('starCounter', () => {
     it('', () => {

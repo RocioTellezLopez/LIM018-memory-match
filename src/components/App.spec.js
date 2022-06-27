@@ -1,5 +1,5 @@
 import {createCards,shuffle,deseleccionar,winner} from './App.js';
-import createMedals from './medallas.js';
+import createMedals from './medals.js';
 
 [{dataset: {pokemonid: 'charmander'}},{dataset: {pokemonid: 'charmander'}}]
 
@@ -24,9 +24,9 @@ describe('shuffle', () => {
   });
 
   it('the inicial oreder of ana array not to be equal after shuffle function execution', ()=>{
-    const valorInicial = [0,1,2,3,4];
-    const aletorio = shuffle([...valorInicial]);
-    expect(aletorio).not.toBe(valorInicial);
+    const initialValue = [0,1,2,3,4];
+    const random = shuffle([...initialValue]);
+    expect(random).not.toBe(initialValue);
   });
 });
 
@@ -36,6 +36,12 @@ describe('deseleccionar', ()=>{
   it('should recognize if 2 elements have different id',()=>{
     deseleccionar(array);
     expect(array[0]).not.toEqual(array[1]);
+  })
+
+  it('que el orden inicial de un array no sea igual luego de ejecutar la funcion shuffle ', ()=>{
+    const valorInicial = [0,1,2,3,4]
+    const aletorio = shuffle([...valorInicial])
+    expect(aletorio).not.toBe(valorInicial)
   })
 });
 
@@ -51,41 +57,32 @@ describe('winner', ()=>{
 describe('createMedals', () => {
     
   it('should render without crashing', () => {
-    const medallas = document.createElement('div');
-    expect(medallas instanceof HTMLElement).toBe(true);
+    const medals = document.createElement('div');
+    expect(medals instanceof HTMLElement).toBe(true);
   });
 
   it('should create html element with a golden medal', ()=> {
-    const medallas = document.createElement('div');
-    medallas.classList='medallas'
-    medallas.innerHTML= `<img src="./img/medalla-de-oro.png"/>`
-    expect(createMedals(20)).toEqual(medallas);
+    const medals = document.createElement('div');
+    medals.classList='medals'
+    medals.innerHTML= `<img src="./img/medalla-de-oro.png"/>`
+    expect(createMedals(20)).toEqual(medals);
   });
 
   it('should create html element with a silver medal', ()=> {
-    const medallas = document.createElement('div');
-    medallas.classList='medallas'
-    medallas.innerHTML= `<img src="./img/medalla-de-plata.png"/>`
-    expect(createMedals(30)).toEqual(medallas);
+    const medals = document.createElement('div');
+    medals.classList='medals'
+    medals.innerHTML= `<img src="./img/medalla-de-plata.png"/>`
+    expect(createMedals(30)).toEqual(medals);
   });
 
   it('should create html element with a bronze medal', ()=> {
-    const medallas = document.createElement('div');
-    medallas.classList='medallas'
-    medallas.innerHTML= `<img src="./img/medalla-de-bronce.png"/>`
-    expect(createMedals(40)).toEqual(medallas);
+    const medals = document.createElement('div');
+    medals.classList='medals'
+    medals.innerHTML= `<img src="./img/medalla-de-bronce.png"/>`
+    expect(createMedals(40)).toEqual(medals);
   });
 
 });
 
-/*document.body.innerHTML = '<p id="timer"></p>';
 
-it('should create the time count', async () => {
 
-  const {createTimer} = await import('./timer.js');
-  expect {createTimer('2:00')}.toBe('1:59');
-
-  const timer = document.getElementById("timer")
-
-  expect( timer.innerHTML).toBe('<p id="timer">1:59</p>');
-});*/
