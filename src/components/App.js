@@ -22,7 +22,8 @@ let countTurn = 0;
 const puntaje = document.getElementById("puntos");
 const mensaje = document.getElementById("mensaje");
 const turn = document.getElementById("turnos");
-const modalContainer = document.getElementById("modalContainer")
+const modalContainer = document.getElementById("modalContainer");
+const resultado = document.getElementById("resultado");
 
 
 const itemsPokemon = [...data.items, ...data.items];
@@ -115,7 +116,7 @@ function winner(selection){
       win.className = "ganador"
       win.textContent = "Ganaste"
       mensaje.appendChild(win);
-      createMedals(countTurn)
+      resultado.appendChild(createMedals(countTurn));
       stopCounter()
     }
 
@@ -130,9 +131,19 @@ function counterTurns(selection){
 return countTurn
 }
 
-
+function createLoser () {
+  modalContainer.style.opacity = "1";
+  modalContainer.style.visibility ="visible";
+  const perdiste = document.createElement ("div");
+  perdiste.className = "perdedor"
+  perdiste.textContent = " INTÉNTALO OTRA VEZ";
+  mensaje.appendChild(perdiste);
+  const imagenLoser = document.createElement ("img")
+  imagenLoser.src= "./img/llorar.png"
+  resultado.appendChild(imagenLoser)
+}
 //console.log(e.currentTarget.dataset.pokemonid)
 
-export {createCards, shuffle,winner, flipCards};
+export {createCards, shuffle,winner, flipCards, createLoser};
 
 

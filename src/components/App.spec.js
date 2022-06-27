@@ -1,6 +1,7 @@
 import { createCards,shuffle} from './App.js';
-import {createTimer} from './timer.js'
-import { fireEvent } from '@testing-library/react';
+import createMedals from './medallas.js';
+
+//import { fireEvent } from '@testing-library/react';
 
 
 
@@ -38,11 +39,38 @@ describe('shuffle', () => {
   })
 });
 
-describe('createTimer', () => {
-
+describe('createMedals', () => {
+  
   it('should be a function', () => {
-    expect(typeof createTimer).toBe('function');
+    expect(typeof createMedals).toBe('function');
   });
+  
+  it('should render without crashing', () => {
+    const medallas = document.createElement('div');
+    expect(medallas instanceof HTMLElement).toBe(true);
+  });
+
+  it('should create html element with a golden medal', ()=> {
+    const medallas = document.createElement('div');
+    medallas.classList='medallas'
+    medallas.innerHTML= `<img src="./img/medalla-de-oro.png"/>`
+    expect(createMedals(20)).toEqual(medallas);
+  });
+
+  it('should create html element with a silver medal', ()=> {
+    const medallas = document.createElement('div');
+    medallas.classList='medallas'
+    medallas.innerHTML= `<img src="./img/medalla-de-plata.png"/>`
+    expect(createMedals(30)).toEqual(medallas);
+  });
+
+  it('should create html element with a bronze medal', ()=> {
+    const medallas = document.createElement('div');
+    medallas.classList='medallas'
+    medallas.innerHTML= `<img src="./img/medalla-de-bronce.png"/>`
+    expect(createMedals(40)).toEqual(medallas);
+  });
+
 });
 
 
