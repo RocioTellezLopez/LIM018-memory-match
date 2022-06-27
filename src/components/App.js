@@ -52,14 +52,14 @@ arrayRandom.forEach(element => {
 //console.log(imagenesCartas)
 })
 
+const usuario = () => {
+  let botonAJugar = document.getElementById('botonAJugar')
 
-const saludar = (nombre) =>{
-  alert(`Hola ${nombre}`)
-}
-
-const usuario = (nombre) => {
-  let usuarioId = prompt('Ingresa tu nombre')
+  botonAJugar.
+  let usuarioId = document.getElementById('userName').value
   let usuario = document.getElementById('usuario')
+
+
   usuario.innerHTML = usuarioId
 
   return  usuario
@@ -71,7 +71,7 @@ const App = () => {
   //return el;
   
   el.appendChild(divCard)
-  saludar('rocio')
+
   usuario()
 
   return el;
