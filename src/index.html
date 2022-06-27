@@ -1,106 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Match</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <section class="firstPage" id = "container">
-        <div class="container">
-          <div class="containerImg"> 
-            
-            <div class="welcome">
-              <h1> APRENDE JUGANDO</h1>
-              <div class="inputName">
-                <input type="text" placeholder=" Nombre del jugador" id="nombre" value="">
-              </div>
-              <div class="buttonName">
-                <button type="submit" id="button"> ¡Vamos! </button>
-              </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <section class="firstPage" id="container">
+      <div class="container">
+        <div class="containerImg">
+          <div class="welcome">
+            <h1> APRENDE JUGANDO</h1>
+            <div class="inputName">
+              <input type="text" placeholder=" Nombre del jugador" id="playerName" value="">
             </div>
-          </div>
-        </div>
-      </section>
-  
-      <section class="disabled" id="second">
-        <div class="secondPage">
-          <div class="images">
-            <div class="libro">
-              <img src="./img/libro.png" alt="libro">
+            <div class="buttonName">
+              <button type="submit" id="button"> ¡Vamos! </button>
             </div>
-            <div class="niña">
-              <img src="./img/niña.png" alt="niña">
-            </div>
-            <div class="cuaderno">
-              <img src="./img/cuadernos.png" alt="cuadernos">
-            </div>
-          </div>  
-          <div class="rules">
-            <h1 class="player" id="player">Hola Carlitos</h1>
-            <div class="reglasJuego">
-              <ol>
-                <li class="title">Reglas del juego</li>
-                <li class="rule1">Puedes escoger dos cartas por turno, si son iguales ganas un punto</li>
-                <li class="rule2">Si son diferentes, intenta de nuevo. 
-                  Trata de recordar qué cartas salieron</li>
-                </ol>
-              </div>
-              <div>
-                <button id="play">Jugar</button>
-              </div>
-            </div>
-        </div>
-      </section>
-  
-      <div class="disabled" id="game">
-        <div class="game">
-          <div class="estadisticas">
-            <div class="principales">
-              <div class="puntaje">
-                <img src="./img/moneda-dolar.png" alt="">
-                <p id = "puntos">0</p>
-              </div>
-              <div class="vidas">
-                <img src="./img/favorito.png" alt="">
-                <p id ="turnos">0</p>
-              </div>
-              <div class="tiempo">
-                <img src="./img/reloj.png" alt="">
-                <p id="timer"> 2:00</p>
-              </div>
-            </div>
-          </div>
-          <div class="table" id="table">
-          </div>
-        </div>
-      
-        <div class="modal-container" id="modalContainer">
-          <div class="modal" id="modal">
-              <div class="resultado" id="resultado">
-                <div class="mensaje" id="mensaje">
-                  
-                    <img src="./img/cohete.png" class="cohete">
-                  
-                </div>
-  
-              </div>
-                <div class="botones">
-                  <button id="back"> Volver </button>
-                </div>
           </div>
         </div>
       </div>
-      </section>
+    </section>
+
+    <section class="disabled" id="second">
+      <div class="secondPage">
+        <div class="images">
+          <div class="book">
+            <img src="./img/libro.png" alt="book">
+          </div>
+          <div class="girl">
+            <img src="./img/niña.png" alt="girl">
+          </div>
+          <div class="notebook">
+            <img src="./img/cuadernos.png" alt="notebooks">
+          </div>
+        </div>
+        <div class="rules">
+          <h1 class="player" id="player">Hola Carlitos</h1>
+          <div class="gameRules">
+            <ol>
+              <li class="title">Reglas del juego</li>
+              <li class="rule1">Puedes escoger dos cartas por turno, si son iguales ganas un punto</li>
+              <li class="rule2">Si son diferentes, intenta de nuevo.
+                Trata de recordar qué cartas salieron</li>
+            </ol>
+          </div>
+          <div>
+            <button id="play">Jugar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="disabled" id="game">
+      <div class="game">
+        <div class="statistics">
+          <div class="main">
+            <div class="theScore">
+              <img src="./img/moneda-dolar.png" alt="">
+              <p id="points">0</p>
+            </div>
+            <div class="lives">
+              <img src="./img/favorito.png" alt="">
+              <p id="turns">0</p>
+            </div>
+            <div class="time" id="time">
+              <img src="./img/reloj.png" alt="">
+              <p id="timer"></p>
+            </div>
+          </div>
+        </div>
+        <div class="table" id="table">
+        </div>
+      </div>
+
+      <div class="modal-container" id="modalContainer">
+        <div class="modal" id="modal">
+          <div class="result" id="result">
+            <div class="message" id="message">
+              <img src="./img/cohete.png" class="rocket">
+            </div>
+          </div>
+          <div class="backButton">
+            <button id="backB">Volver</button>
+          </div>
+        </div>
+      </div>
     </div>
-   
-    
-    <script src="main.js" type="module"></script>
-  </body>
+    </section>
+  </div>
+
+  <script src="main.js" type="module"></script>
+</body>
+
 </html>

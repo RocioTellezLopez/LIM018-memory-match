@@ -1,4 +1,4 @@
-import { createTimer } from "./timer";
+import {createTimer} from "./timer";
 
 describe('createTimer', () => {
   const root = document.body;
@@ -16,7 +16,7 @@ describe('createTimer', () => {
 })
 
 jest.useFakeTimers();
-jest.spyOn(global, 'setTimeout');
+//jest.spyOn(global, 'setInterval');
 
 test('waits 1 second before ending the game', () => {
   const setInterval = require('../timerGame');
