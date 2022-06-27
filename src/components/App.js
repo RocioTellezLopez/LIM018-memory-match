@@ -18,7 +18,7 @@ import webdev from '../data/webdev/webdev.js'
 //------Duplicar data 
 let arrayWebdev = webdev.items
 let arrayDoble = arrayWebdev.concat(arrayWebdev)
-console.log(arrayDoble)
+//console.log(arrayDoble)
 
 //------Funcion mezclar cartas Fisher-Yates
 const shuffle = (array) => {
@@ -30,7 +30,7 @@ const shuffle = (array) => {
   }
   return array
 }
-//let arrayExam = ['uno','dos','tres','cuatro','cinco','seis']
+//let arrayExam = ['carro','dos','tres','cuatro','cinco','seis']
 //console.log(shuffle(arrayExam))
 
 let arrayRandom = shuffle(arrayDoble)
@@ -53,8 +53,17 @@ arrayRandom.forEach(element => {
 })
 
 
+const saludar = (nombre) =>{
+  alert(`Hola ${nombre}`)
+}
 
+const usuario = (nombre) => {
+  let usuarioId = prompt('Ingresa tu nombre')
+  let usuario = document.getElementById('usuario')
+  usuario.innerHTML = usuarioId
 
+  return  usuario
+}
 
 const App = () => {
   const el = document.createElement('div');
@@ -63,7 +72,9 @@ const App = () => {
   //el.textContent = 'Hola mundo!';
   //return el;
   el.appendChild(divCard)
-  
+  saludar('rocio')
+  usuario()
+
   return el;
 };
 
