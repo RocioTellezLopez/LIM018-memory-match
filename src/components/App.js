@@ -68,7 +68,12 @@ const usuario = (nombre) => {
 const App = () => {
   const el = document.createElement('div');
 
-  el.className = 'App';
+import webdev from '../data/webdev/webdev.js';
+console.log(webdev.items);
+
+  const App = () => {
+  const el = document.createElement('div');
+    el.className = 'App';
   //el.textContent = 'Hola mundo!';
   //return el;
   el.appendChild(divCard)
