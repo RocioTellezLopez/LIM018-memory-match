@@ -52,19 +52,27 @@ arrayRandom.forEach(element => {
 //console.log(imagenesCartas)
 })
 
-const usuario = () => {
-  let botonAJugar = document.getElementById('botonAJugar')
-
-  botonAJugar.
-  let usuarioId = document.getElementById('userName').value
+//---------
+const usuario = (nombre) => {
+  let usuarioId = prompt('Ingresa tu nombre')
   let usuario = document.getElementById('usuario')
-
-
   usuario.innerHTML = usuarioId
 
   return  usuario
 }
 
+
+/*function usuario() {
+  //let botonAJugar = document.getElementById('botonAJugar')
+
+  //.addEventListener ('click', () =>{
+    let usuarioId = document.getElementById('userName').value
+    let usuario = document.getElementById('usuario')
+    usuario.innerHTML = usuarioId
+  //})
+}*/
+
+//--------
 const App = () => {
   const el = document.createElement('div');
   //el.textContent = 'Hola mundo!';
