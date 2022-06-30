@@ -1,16 +1,16 @@
 import { createLoser } from './App.js'
 
-
+let timeInterval = 0;
 let theTime = 180;
-let intervaloTiempo = 0;
-
-const timer = document.getElementById("timer")
+const getTimer = () => document.getElementById("timer")
 
 
 const createTimer = () => {
+    const t = getTimer();
+    
     if (theTime === 0) {
         stopCounter();
-        setTimeout(createLoser, 1000)
+        createLoser();
     }
 
     let minutes = Math.floor(theTime / 60);
@@ -22,21 +22,21 @@ const createTimer = () => {
     }
 
     const textTimer = minutes + ':' + seconds;
-    timer.innerHTML = textTimer;
+    t.innerHTML = textTimer;
     theTime--;
 
-    return timer
+    return t
 }
 
 const startCounter = () => {
-    intervaloTiempo = setInterval(() => {
-        createTimer(timer)
+    timeInterval = setInterval(() => {
+        createTimer()
     }, 600);
 
 }
 
 const stopCounter = () => {
-    clearInterval(intervaloTiempo);
+    clearInterval(timeInterval);
 }
 
 export { createTimer, stopCounter, startCounter };
