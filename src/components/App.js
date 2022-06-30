@@ -9,7 +9,7 @@ import webdev from '../data/webdev/webdev.js'
 
 
   //console.log(mostrarData);
-
+ 
 
 
 //
@@ -23,26 +23,62 @@ import webdev from '../data/webdev/webdev.js'
 //}
 
 
+/*let array2 = array1.forEach(
+  alert("Hola")
+);*/
+//console.log(array2)
+
+
+
+
+//let mostrarData = document.getElementById('root')
+//mostrarData.innerHTML = webdev.items
+//console.log(webdev.items[0].image)
+
+//document.getElementById("image").src = webdev.items[0].image
+
 const App = () => {
 
-//Fiorella
-var mostrarData = webdev.items
+
+  let crearEtiquetaImg = document.createElement("img")
+  document.getElementById('root').appendChild(crearEtiquetaImg)
+  //crearEtiquetaImg.src = webdev.items[0].image
+  let array1 = webdev.items
+  let dobleArray= array1.concat(array1)
+
+  console.log(dobleArray)
+  
+  for(let i=0; i<dobleArray.length; i++){
+    let mostrarImagenes = document.createElement("img")
+    mostrarImagenes.src = dobleArray[i].image
+    //console.log(array1[i].image)
+    document.getElementById('root').appendChild(mostrarImagenes)
+    //console.log(mostrarImagenes)
+
+    //crear etiquetas para duplicar las cartas
+    /*let dobleImagenes = document.createElement("img")
+    document.getElementById('root').appendChild(dobleImagenes)
+    
+    dobleImagenes.src = mostrarImagenes.src.slice()
+    console.log(dobleImagenes)*/
+  }
 
 
-  //var dobleData = mostrarData.map(function(x){
-    //return (x + x);
- //});
+  /*dobleImagenes.src = mostrarImagenes.map(function(x){
+    return (x + x);
+ });*/
  
- //var dobleData = mostrarData.slice();
+  //var dobleImagenes = mostrarImagenes.slice();
+
  //var dobleData = [...mostrarData];
  //var dobleData = Array.from(mostrarData);
  //console.log(dobleData);
 //Fiorella-Hasta Aquí
 
-  //const el = document.createElement('div');
+  const el = document.createElement('div');
+  el.className = 'App';
+  el.textContent = 'Hola mundo!';
 
-  //el.className = 'App';
-  //el.textContent = 'Hola mundo!';
   //return el;
   /*const divCartas = document.createElement('div')
 
@@ -91,7 +127,7 @@ var mostrarData = webdev.items
     divCartas.appendChild(imgCartas)
     divCartas.appendChild(imgDoble)
   }*/
-  //return el;
+  return el;
 }; 
 
 export default App;

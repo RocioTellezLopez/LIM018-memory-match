@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 
-.App {
-    /*background-color: bisque;*/
+/*.App {
+    /*background-color: bisque;
 }
 
 .estiloCartas {
@@ -18,7 +18,7 @@
     border-radius: 5px;
     transition: transform .6s cubic-bezier(.33,.61,.57,.31);
     backface-visibility: hidden;
-    /*transform: rotateY(180deg);*/
+    /*transform: rotateY(180deg);
 }
 
 div.divCartas {
@@ -37,7 +37,7 @@ div.divCartas {
 
 header {
     height: 80px;
-    /*background-color: aquamarine;*/
+    /*background-color: aquamarine;
     text-align: center;
     padding: 20px;
     margin: 10px;
@@ -56,7 +56,7 @@ ul {
     width: 430px;
     border-radius: 10px;
     margin: 10px;
-    /*margin-left: 450px;*/
+    /*margin-left: 450px;
 
     display: flex;
     flex-direction: row;
@@ -76,6 +76,13 @@ ul {
     
 }*/
 
-#image{
-    width: 130px;
+img{
+    width: 100px;
+}
+
+#root{
+    background-color: rgb(151, 148, 148);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
