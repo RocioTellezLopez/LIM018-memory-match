@@ -135,17 +135,7 @@ function createLoser() {
   result.appendChild(imageLoser)
 }
 
-function createLoser () {
-  modalContainer.style.opacity = "1";
-  modalContainer.style.visibility ="visible";
-  const perdiste = document.createElement ("div");
-  perdiste.className = "perdedor"
-  perdiste.textContent = " INTÉNTALO OTRA VEZ";
-  mensaje.appendChild(perdiste);
-  const imagenLoser = document.createElement ("img")
-  imagenLoser.src= "./img/llorar.png"
-  resultado.appendChild(imagenLoser)
-}
+
 //console.log(e.currentTarget.dataset.pokemonid)
 
 export { createCards, shuffle, winner, createLoser };
