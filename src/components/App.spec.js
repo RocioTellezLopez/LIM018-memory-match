@@ -1,5 +1,7 @@
-import {createCards,shuffle,deselect,winner} from './App.js';
-
+import {createCards,shuffle,deselect,winner,counterTurns} from './App.js';
+jest.useFakeTimers();
+// eslint-disable-next-line no-undef
+jest.spyOn(global, 'setTimeout');
 
 describe('createCards', () => {
   const pokemones = [
@@ -43,17 +45,19 @@ describe('shuffle', () => {
 });
 
 describe('deselect', ()=>{
-  //beforeEach(() => {
-    //document.body.innerHTML = '<div data-pokemonid="charmander"></div>'
-  //})
-  let array = [{dataset: {pokemonid: 'charmander'}},{dataset: {pokemonid: 'venasaur'}}];
-  //array[0].style.transform = 'rotateY(180deg)'
+  let array;
+  beforeEach(() => {
+    document.body.innerHTML = '<div data-pokemonid="charmander" class="rotated"></div>';
+    document.body.innerHTML += '<div data-pokemonid="venasaur" class="rotated"></div>'
+    array = [...document.getElementsByClassName("rotated")];
+})
 
-  it('should recognize if 2 elements have different id and put the cards back face down',()=>{
+it('should recognize if 2 elements have different id and put the cards back face down',()=>{
     deselect(array);
+    jest.runAllTimers();
+    
+    expect(array[0].style.transform).toBe('rotateY(0deg)');
 
-    //expect(array[0].style.transform).toBe('rotateY(0deg)');
-    expect(array[0]).not.toEqual(array[1]);
   })
 
 });
@@ -67,11 +71,52 @@ describe('winner', ()=>{
   it('should recognize if 2 elements have the same id and add 100 points to the score',()=>{
     winner(array);
     const points = document.getElementById("points");
-    //expect(array[0]).toEqual(array[1]);
+    
     expect(points.textContent).toBe('100');
   });
 });
 
-describe('flipcards')
+describe('counterTurns', () => {
+  beforeEach(() =>{
+    document.body.innerHTML = '<div id="turns">0</div>'
+  })
+  
+  it('should render without crashing', () => {
+    let trn = counterTurns([]); 
+    expect(trn instanceof HTMLElement).toBe(true);
+  });
+  
+  it('should count the turns', () => {
+    let trn = counterTurns([]);
+    
+    expect(trn.innerHTML).toBe('0');
+  });
+  
+  it('should count the turns', () => {
+    let trn = counterTurns([1,2]);
+    
+    expect(trn.innerHTML).toBe('1');
+  });
+  
+})
 
+/*
+describe('createLoser', ()=>{
+  beforeEach(() =>{
+    document.body.innerHTML = '<div id="modalContainer" style="opacity:1"></div>'
+  })
+  it('debe indicar que perdiste ', () =>{
+    const result = document.createElement('div');
+    result.classList='result'
+    result.innerHTML= `<img src="./img/llorar.png">`
 
+    const message = document.createElement('div');
+    message.innerHTML = 'Intentalo otra vez'
+
+    expect(createLoser() instanceof HTMLElement).tobe(true);
+    });
+    
+  })
+*/
+
+//describe('flipcards')

@@ -3,8 +3,6 @@
 @import './gameRules.css';
 @import './modal.css';
 
-
-
 body {    
     margin: 0;
     
@@ -22,9 +20,8 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url(../img/BIENVENIDA-FONDO\ 1.png);
-    max-width: 59.6rem;
     height: 100vh;
-    background-position-x: center;
+    background-position: center;
     background-repeat: no-repeat;
     margin: auto;
 }
@@ -77,5 +74,20 @@ input {
 input::placeholder {
     color: rgba(0, 0, 0, 0.68);
     font-family: Luckiest Guy ;
+}
+
+.inputName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color:#B32828;
+    font-family: Luckiest Guy;
+    background: rgba(217, 217, 217, 0.6);
+    border-radius: 0.9rem;
+    margin: 0;
 }
 

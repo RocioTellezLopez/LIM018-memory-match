@@ -16,10 +16,10 @@ import createMedals from './medals.js'
 let score = 0;
 let countTurn = 0;
 const getPoints = () => document.getElementById("points");
-const message = document.getElementById("message");
-const turn = document.getElementById("turns");
-const modalContainer = document.getElementById("modalContainer");
-const result = document.getElementById("result");
+const getMessage = () => document.getElementById("message");
+const getTurns = () => document.getElementById("turns");
+const getModalContainer = () => document.getElementById("modalContainer");
+const getResult = () => document.getElementById("result");
 
 const itemsPokemon = [...data.items, ...data.items];
 
@@ -77,8 +77,7 @@ function flipCards(e) {
   //selection.push(e.currentTarget);
   let selection = [...document.getElementsByClassName('rotated')];
   const selectLength = selection.length
-  console.log(selection);
-  console.log(selectLength)
+  
   if (selectLength == 2) {
     winner(selection);
     deselect(selection);
@@ -93,22 +92,28 @@ function deselect(selection) {
     if (selection[0].dataset.pokemonid != selection[1].dataset.pokemonid) {
       selection[0].style.transform = "rotateY(0deg)";
       selection[1].style.transform = "rotateY(0deg)";
+      
     }
   }, 1100);
 }
 
 function winner(selection) {
-  const p = getPoints();
+  const pt = getPoints();
+  const message = getMessage();
+  const result = getResult();
   if (selection[0].dataset.pokemonid == selection[1].dataset.pokemonid) {
     score += 100
-    p.innerHTML = `${score}`
+    pt.innerHTML = `${score}`
   
     if (score === 900) {
+      const modalContainer = getModalContainer()
       modalContainer.style.opacity = "1";
       modalContainer.style.visibility = "visible";
+
       const win = document.createElement("div");
-      win.className = "winner"
-      win.textContent = "Ganaste"
+      win.className = "winner";
+      win.textContent = "Ganaste";
+
       message.appendChild(win);
       result.appendChild(createMedals(countTurn));
       stopCounter()
@@ -118,28 +123,35 @@ function winner(selection) {
 }
 
 function counterTurns(selection) {
+  const trn = getTurns();
   if (selection.length == 2) {
     countTurn++
-    turn.innerHTML = `${countTurn}`
+    trn.innerHTML = `${countTurn}`
   }
-  return countTurn
+  return trn
 }
 
 function createLoser() {
+  const modalContainer = getModalContainer()
   modalContainer.style.opacity = "1";
   modalContainer.style.visibility = "visible";
+  const message = getMessage();
+  const result = getResult();
+
   const loser = document.createElement("div");
-  loser.className = "loser"
+  loser.className = "loser";
   loser.textContent = " INTÉNTALO OTRA VEZ";
   message.appendChild(loser);
-  const imageLoser = document.createElement("img")
-  imageLoser.src = "./img/llorar.png"
-  result.appendChild(imageLoser)
+
+  const imageLoser = document.createElement("img");
+  imageLoser.src = "./img/llorar.png";
+  result.appendChild(imageLoser);
+
 }
 
 
 //console.log(e.currentTarget.dataset.pokemonid)
 
-export { createCards, shuffle, winner, createLoser,deselect };
+export { createCards, shuffle, winner, createLoser,deselect,counterTurns };
 
 
