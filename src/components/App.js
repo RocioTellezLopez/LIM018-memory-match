@@ -15,7 +15,7 @@ import createMedals from './medals.js'
 
 let score = 0;
 let countTurn = 0;
-const points = document.getElementById("points");
+const getPoints = () => document.getElementById("points");
 const message = document.getElementById("message");
 const turn = document.getElementById("turns");
 const modalContainer = document.getElementById("modalContainer");
@@ -32,11 +32,11 @@ const sortedPokemon = shuffle(itemsPokemon);
 //console.log(sortedPokemon)
 
 
-const createCards = () => {
+const createCards = (pokemons = sortedPokemon) => {  
   const cardArea = document.createElement('div');
   cardArea.className = "cardArea";
 
-  sortedPokemon.forEach(item => {
+  pokemons.forEach(item => {
     //Creando div "tarjeta(card)"
     const card = document.createElement("div");
     card.className = "card";
@@ -71,19 +71,19 @@ const createCards = () => {
 }
 
 
-let selection = [];
 function flipCards(e) {
   e.currentTarget.style.transform = "rotateY(180deg)";
-  selection.push(e.currentTarget);
+  e.currentTarget.classList.add('rotated');
+  //selection.push(e.currentTarget);
+  let selection = [...document.getElementsByClassName('rotated')];
   const selectLength = selection.length
-
+  console.log(selection);
+  console.log(selectLength)
   if (selectLength == 2) {
     winner(selection);
     deselect(selection);
     counterTurns(selection);
-  }
-  if (selection.length == 2) {
-    selection = []
+    selection.forEach((item) => item.classList.remove('rotated'));
   }
 }
 
@@ -98,10 +98,12 @@ function deselect(selection) {
 }
 
 function winner(selection) {
+  const p = getPoints();
   if (selection[0].dataset.pokemonid == selection[1].dataset.pokemonid) {
     score += 100
-    points.innerHTML = `${score}`
-    if (score == 900) {
+    p.innerHTML = `${score}`
+  
+    if (score === 900) {
       modalContainer.style.opacity = "1";
       modalContainer.style.visibility = "visible";
       const win = document.createElement("div");
@@ -138,6 +140,6 @@ function createLoser() {
 
 //console.log(e.currentTarget.dataset.pokemonid)
 
-export { createCards, shuffle, winner, createLoser };
+export { createCards, shuffle, winner, createLoser,deselect };
 
 

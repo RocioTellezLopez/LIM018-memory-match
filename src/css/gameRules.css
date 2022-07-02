@@ -7,6 +7,10 @@
     display: none;
 }
 
+.disabled .enabled
+{
+  height: 100%;
+}
 .secondPage {
     display: flex;
     justify-content: center;
@@ -80,6 +84,7 @@ li {
     color: rgba(167, 63, 192, 1);
 }
 
+
 @media screen and (max-width : 965px){
     .secondPage {
         display: flex;
@@ -108,9 +113,7 @@ li {
     }
 
     li {
-        font-family: 'Roboto', sans-serif;
         font-size: 1.5rem;
-        font-weight: bold;
         margin: 1.56rem;
     }
 }

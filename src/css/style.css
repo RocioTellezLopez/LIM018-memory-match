@@ -7,13 +7,13 @@
 
 body {    
     margin: 0;
-    height: 100%;
+    
 }
 
 .wrapper {
     background: linear-gradient(180deg, rgba(100, 179, 244, 0.72) 0%, rgba(154, 208, 194, 0.668437) 46.88%, rgba(194, 229, 156, 0.63) 100%);
     margin: 0;
-    width: auto;
+    width: 100%;
     min-height: 100vh;
 }
 

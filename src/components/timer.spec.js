@@ -1,29 +1,32 @@
+
+//jest.spyOn(global, 'setInterval');
 import {createTimer} from "./timer";
 
 describe('createTimer', () => {
-  const root = document.body;
-  root.innerHTML= `<div id="timer"></div>`;
+  beforeEach(() => {
+    document.body.innerHTML = '<p id="timer"></p>'
+  });
+  //const root = document.body;
+  //root.innerHTML= `<div id="timer"></div>`;
 
   it('should be a function', ()=> {
     expect(typeof createTimer).toBe('function');  
   });
 
   it('should render without crashing', () => {
-    const timer = document.createElement("div");
-    expect(createTimer(timer) instanceof HTMLElement).toEqual(true);
+
+    const t = createTimer();
+    expect(t instanceof HTMLElement).toBe(true);
   });
+}); 
 
-})
 
-jest.useFakeTimers();
-//jest.spyOn(global, 'setInterval');
-
-test('waits 1 second before ending the game', () => {
-  const setInterval = require('../timerGame');
-  timerGame();
-
-  expect(setTimeout).toHaveBeenCalledTimes(1);
-  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+test('waits 600 microseconds before starting the game', () => {
+  const createTimer = require('./timer.js');
+  //createTimer();
+  jest.useFakeTimers();
+  expect(createTimer).toHaveBeenCalledTimes(1);
+  expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 });
 
 /*describe('starCounter', () => {

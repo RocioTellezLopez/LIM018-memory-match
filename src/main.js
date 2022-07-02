@@ -20,6 +20,7 @@ const secondPage = document.getElementById("second")
 const game = document.getElementById("game")
 
 go.addEventListener("click", () => {
+    
     player.textContent = `Hola ${playerName.value} !`
     container.className = "disabled";
     secondPage.className = "enabled";
