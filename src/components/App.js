@@ -40,17 +40,20 @@ import webdev from '../data/webdev/webdev.js'
 const App = () => {
 
 
-  let crearEtiquetaImg = document.createElement("img")
-  document.getElementById('root').appendChild(crearEtiquetaImg)
+  //let crearEtiquetaImg = document.createElement("img")
+  //document.getElementById('root').appendChild(crearEtiquetaImg)
   //crearEtiquetaImg.src = webdev.items[0].image
   let array1 = webdev.items
   let dobleArray= array1.concat(array1)
+  let distribuirCartas = shuffle(dobleArray)
 
-  console.log(dobleArray)
+  console.log(distribuirCartas)
   
-  for(let i=0; i<dobleArray.length; i++){
+  for(let i=0; i<distribuirCartas.length; i++){
     let mostrarImagenes = document.createElement("img")
-    mostrarImagenes.src = dobleArray[i].image
+    mostrarImagenes.src = distribuirCartas[i].image
+    distribuirCartas.className = "estiloImagenes"
+    
     //console.log(array1[i].image)
     document.getElementById('root').appendChild(mostrarImagenes)
     //console.log(mostrarImagenes)
@@ -61,9 +64,29 @@ const App = () => {
     
     dobleImagenes.src = mostrarImagenes.src.slice()
     console.log(dobleImagenes)*/
+   
   }
+  //et num1 = ["a","b","c"]
+  //let num = [1,2,3,4,5]
+    function shuffle(num){
+      for(let i = num.length-1; i>0; i--){
+        let a = Math.floor(Math.random() * (i + 1));
+        [num[i],num[a]] = [num[a],num[i]];
+        //shuffle(mostrarImagenes);
+      }
+      //shuffle(mostrarImagenes);
+      //console.log(mostrarImagenes);
+      return num;
+    }
+      //console.log(shuffle(dobleArray))
+    //console.log(shuffle(num1))
 
+  
+     
+  
+  
 
+    
   /*dobleImagenes.src = mostrarImagenes.map(function(x){
     return (x + x);
  });*/
@@ -73,13 +96,13 @@ const App = () => {
  //var dobleData = [...mostrarData];
  //var dobleData = Array.from(mostrarData);
  //console.log(dobleData);
-//Fiorella-Hasta Aquí
+
 
   const el = document.createElement('div');
   el.className = 'App';
   el.textContent = 'Hola mundo!';
 
-  //return el;
+  return el;
   /*const divCartas = document.createElement('div')
 
   divCartas.className = 'divCartas'
@@ -127,7 +150,7 @@ const App = () => {
     divCartas.appendChild(imgCartas)
     divCartas.appendChild(imgDoble)
   }*/
-  return el;
+  //return el;
 }; 
 
 export default App;
