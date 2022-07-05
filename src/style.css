@@ -3,27 +3,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Yatra One', cursive;
-    
+    font-family: 'Yatra One', cursive; 
 }
 
 .App {
     width: 640px;
     height: 640px;
-    display: flex;
-    flex-wrap: wrap;     
-    /*background-color: bisque;*/
-}
-
-.estiloCartas {
-    width: 75px;
-    margin: 5px;
-    padding: 10px;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(50, 50, 60);
-    border-radius: 5px;
-    
+    display: flex;    
 }
 
 .img h1{
@@ -45,7 +31,6 @@
 }
 
 h2{
-  
     font-size: medium;
     right: 30px;  
 }
@@ -75,27 +60,12 @@ h2{
 }
 
 .boton:hover{
-    background-color: rgb(216, 69, 69);
-   
-}
-
-.estiloCartas {
-    width: 70px;
-    margin: 5px;
-    padding: 10px;
-
-    align-items: center;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(50, 50, 60);
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: rgb(216, 69, 69);  
 }
 
 header {
     position: relative;
     height: 100%;
-    /*background-color: aquamarine;*/
     text-align: center;   
 }
 
@@ -104,18 +74,26 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1)),url('imagenes/pro.jpeg');
+}
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+   /* background-image: url('imagenes/pro.jpeg');*/   
 }
 
-h1{
+h2{
     font-size:45px;
     justify-content: center;
     display:flex;
     color: red;
+    background-repeat: repeat;
     margin-top: 40px;
 }
 
 ul {
-    width: 430px;
+    width: 550px;
     height: 60px;
     background-color:#E7C515;
     border-radius: 10px;
@@ -125,49 +103,47 @@ ul {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
 
- .cardBoard{
-    width: 840px;
-    height: 440px;
-    justify-content: space-around;
+div .cardBoard{
+    width: 740px;
+    height: 500px;
+    margin: 10px;
+    padding: 30PX;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(173, 183, 183);
-   
+    border-radius: 25px;
+    background-color: rgb(187, 181, 181);
+   /*background-color: rgb(173, 183, 183);*/
 }
 
-
-div .memoryCard {
-    width: calc(25% - 10px);
-    height: 33%;
-    margin: 5px; 
-    display: flex;
+ div .memoryCard {
+    width: calc(20% - 10px);
+    height: calc(25% - 10px);
+    margin: 5px;
     transform-style: preserve-3d;
-    transition: 0.3s;
-    position: relative;  
+    transition: transform .5s;
+    position: relative;     
 }
 
-div .memoryCard:active{
-    transform: scale(0.97);
+ div .memoryCard:active{
+    transform: scale(0.97);  
 }
 
-div .memoryCard.flip{
+ div .memoryCard.flip{
     transform: rotateY(180deg);
 }
 
-
-div .front-face,
-div .back-face
- {
+.front-face,
+.back-face{
     width: 100%;
     height: 100%;
-    background: #db302a;
-    padding: 10px;
+    background: red;
+    padding: 8px;
     display: flex;
-    border-radius: 20px;
+    border-radius: 10px;
     position: absolute;
+    backface-visibility: hidden;
 }
 
 .front-face{
@@ -175,49 +151,71 @@ div .back-face
 }
 
 
-/*@media (max-width: 600px) {
-  
+@media (max-width: 600px) {
+    
+    
+    ul {
+        width: 450px;
+        height: 60px;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px;
+    }
+    div .cardBoard{
+        width:70%;
+        height:70%; 
+        display: flex; 
+        justify-content: center;
+    }
     div .memoryCard {
-        flex: 100%;
+        width: calc(30% - 10px);
+        height: calc(30% - 10px);
+        
     }
     .img h1{
         width: 10%;
     }
     .name{
-        width: 10%;
+        width: 90%;
         height: 35px;
-        font-size:5px;
+        font-size:15px;
+        margin: 20px;
     }
-
 }
 
 @media  (max-width: 375px) {
   
-    div .memoryCard {
-        flex: 50%;
+    ul {
+        width: 350px;
+        height: 60px;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px;
     }
-    .front-face  {
+    div .cardBoard{
+        width: 65%;
+        height: 65%; 
         display: flex;
-        width: 25%;
-        margin: 2px;
-        padding: 2px;  
+        
+    }
+    div .memoryCard {
+        width: calc(30% - 10px);
+        height: calc(30% - 10px);
+        display: flex;
+       
     }
     .img h1{
         display: flex;
         width: 10%;
     }
-    .input{
-        width: 100%;
-        padding: 45px;
-       
-    }
+   
 
     .name{
-        display: flex;
-        width: 10%;
+        width: 100%;
         height: 35px;
-        font-size:5px;
-    }*/
-
+        font-size:15px;
+        margin: 20px;
+    }
+}
 
 
