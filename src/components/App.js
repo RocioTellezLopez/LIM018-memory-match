@@ -74,6 +74,13 @@ const App = () => {
     divIconos2.className ='back-face' 
     divIconos2.setAttribute ('src', 'https://static.vecteezy.com/system/resources/previews/002/358/541/non_2x/programming-icon-free-vector.jpg');
     memoryCard.appendChild(divIconos2)*/
+
+    // Función flip 
+
+    memoryCard.addEventListener('click', flip)
+    function flip() {
+      memoryCard.classList.add('flip')
+    }
     
   });
   return el;
