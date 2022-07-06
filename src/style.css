@@ -36,12 +36,13 @@ div.divCartas {
 }*/
 
 header {
-    height: 80px;
-    background-color: aquamarine;
+    height: 100px;
+    background-color: rgb(206, 218, 40);
     text-align: center;
     padding: 20px;
     margin: 10px;
     font-size: 20px;
+    
 }
 
 /*main {
@@ -77,18 +78,58 @@ ul {
 }*/
 
 img{
-    width: 100px;
+    width: 80px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    border: solid 3px rgb(236, 235, 241);
+    
+    
+}
+
+.contenedorImagenes{
+    display: flex;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    transition: transform .4s cubic-bezier(.16,.77,.83,.49);
+    
+} 
+
+.flip{
+    transform: rotateY(180deg);
+}
+
+.frontFace{
+    position: relative;
+    transform: rotateY(180deg);
+    
+}
+
+.backFace{
+    position: absolute;
+    backface-visibility: hidden;
+    
+}
+
+.backFace img{
+    background-color: white;
+    width: 80px;
 }
 
 #root{
-    width: 50%;
+    width: 35%;
+    height: 35%;
     background-color: rgb(151, 148, 148);
-    flex-direction: column;
+    /*flex-direction: column;*/
     justify-content: center;
     align-items: center;
     margin: 5px;
     padding: 10px;
     border: 1px solid rgb(50, 50, 60);
     border-radius: 5px;
-    margin-left: 350px;
+    margin-left: 430px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }

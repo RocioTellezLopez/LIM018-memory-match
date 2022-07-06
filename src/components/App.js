@@ -48,16 +48,48 @@ const App = () => {
   let distribuirCartas = shuffle(dobleArray)
 
   console.log(distribuirCartas)
+
+  
   
   for(let i=0; i<distribuirCartas.length; i++){
+
+    //Crear un contenedor de imágenes
+    let contenedorImagenes=document.createElement("div")
+    contenedorImagenes.className="contenedorImagenes"
+    root.appendChild(contenedorImagenes)
+
+    //Crear un FrontFace
+    let frontFace = document.createElement('div')
+    frontFace.className='frontFace'
+    contenedorImagenes.appendChild(frontFace)
+
+    //Crear imágenes
     let mostrarImagenes = document.createElement("img")
     mostrarImagenes.src = distribuirCartas[i].image
-    distribuirCartas.className = "estiloImagenes"
-    
+    mostrarImagenes.alt = distribuirCartas[i].id
+    mostrarImagenes.style.backgroundColor= distribuirCartas[i].bgColor
+    //contenedorImagenes.appendChild(estiloImagenes)
+    frontFace.appendChild(mostrarImagenes)
+
+    //Crear un backFace
+    let backFace = document.createElement('div')
+    backFace.className='backFace'
+    contenedorImagenes.appendChild(backFace)
     //console.log(array1[i].image)
-    document.getElementById('root').appendChild(mostrarImagenes)
+    
     //console.log(mostrarImagenes)
 
+    //Crear imágenes del backFace
+    let imgBackFace = document.createElement('img')
+    //imgBackFace.style.backgroundImage = url()
+    imgBackFace.setAttribute('src', '../data/images.png')
+    backFace.appendChild(imgBackFace)
+
+    contenedorImagenes.addEventListener('click', saludo)
+    function saludo(){
+      contenedorImagenes.classList.add('flip')
+      //console.log('Hola');
+    }
     //crear etiquetas para duplicar las cartas
     /*let dobleImagenes = document.createElement("img")
     document.getElementById('root').appendChild(dobleImagenes)
@@ -81,7 +113,11 @@ const App = () => {
       //console.log(shuffle(dobleArray))
     //console.log(shuffle(num1))
 
-  
+  const el = document.createElement('div');
+  el.className = 'App';
+  //el.textContent = 'Hola mundo!';
+
+  return el;
      
   
   
@@ -98,11 +134,7 @@ const App = () => {
  //console.log(dobleData);
 
 
-  const el = document.createElement('div');
-  el.className = 'App';
-  el.textContent = 'Hola mundo!';
 
-  return el;
   /*const divCartas = document.createElement('div')
 
   divCartas.className = 'divCartas'
