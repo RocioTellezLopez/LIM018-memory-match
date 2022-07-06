@@ -106,8 +106,8 @@ ul {
 }
 
 div .cardBoard{
-    width: 740px;
-    height: 500px;
+    width: 640px;
+    height: 600px;
     margin: 10px;
     padding: 30PX;
     display: flex;
@@ -149,6 +149,7 @@ div .cardBoard{
 .front-face{
     transform: rotateY(180deg);
 }
+
 
 
 @media (max-width: 600px) {
@@ -196,12 +197,14 @@ div .cardBoard{
         width: 65%;
         height: 65%; 
         display: flex;
+     
         
     }
     div .memoryCard {
         width: calc(30% - 10px);
         height: calc(30% - 10px);
         display: flex;
+      
        
     }
     .img h1{

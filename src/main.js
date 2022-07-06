@@ -6,8 +6,8 @@ document.getElementById('root').appendChild(App());
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 50;
-let timerInicial = 50;
+let timer = 60;
+let timerInicial = 60;
 let tiempoRegresivoId = null;
 
 
@@ -39,66 +39,83 @@ function bloquearTarjetas(){
   }
 }
 
-function flipCard(){
+(function shuffle(){
+  cards.forEach(card => {
+    let rand = Math.floor(Math.random()*12);
+    card.style.order = rand;
+    console.log(rand)
+  });
+})();
+
+// función voltear cartas
+function flipCard() {
  
-  if(temporizador == false){
+  if(temporizador == false){//
     contarTiempo();
     temporizador = true;
   }
 
-  if(lockCard)return false;
+  if(lockCard)return false;//para que la primera carta se vuelva a tapar si no hace match
     this.classList.add('flip');
    
   if(!firstCard){
-    firstCard=this;
+    firstCard = this;
     return false;
   }
-   console.log({lockCard, firstCard});
-  secondCard=this;
+   
+  secondCard = this;
   checkForMatch();
-
+}
 function checkForMatch(){
   let isMatch = firstCard.dataset.card === secondCard.dataset.card;
+  console.log(isMatch);
+
+  //condición ? expresión1 : expresión2;
+  //var miEdad = 24;
+  // var mayorEdad = (miEdad > 18) ? “Sí, eres mayor de edad” : “No, sigue intentando”;
   !isMatch ? disableCards() : resetCards(isMatch);
  
 //Incrementar movimientos
-movimientos++;
-mostrarMovimientos.innerHTML= `Movimientos: ${movimientos}`;
-if(firstCard == secondCard){
-  lockCard = 0;
+  movimientos++;
+  mostrarMovimientos.innerHTML= `Movimientos: ${movimientos}`;
+    if(firstCard == secondCard){
+    lockCard = 0;
 
 //Aumentar Aciertos
-aciertos++;
-mostrarAciertos.innerHTML = `Aciertos:${aciertos}`;
-  if (aciertos == 10){
-    clearInterval(tiempoRegresivoId);
-    mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`
-    mostrarTiempo.innerHTML = `Tiempo: ${timerInicial - timer} segundos`;
-    mostrarMovimientos.innerHTML =`Movimientos: ${movimientos}`; 
+  aciertos++;
+  mostrarAciertos.innerHTML = `Aciertos:${aciertos}`;
+    if (aciertos == 10){
+      clearInterval(tiempoRegresivoId);
+      mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`
+      mostrarTiempo.innerHTML = `Tiempo: ${timerInicial - timer} segundos`;
+      mostrarMovimientos.innerHTML =`Movimientos: ${movimientos}`; 
+    }
   }
- }
 }
 
-function disableCards(){
-  lockCard = true;
-    setTimeout(()=> {
-      firstCard.classList.remove('flip');
-      secondCard.classList.remove('flip');
-      resetCards();
-    }, 1000);  
-  }
- 
-function resetCards(isMatch = false){
-  if(isMatch){
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard); 
+//Desactivar  cartas
+  function disableCards(){
+    lockCard = true; //Para que al voltear dos cartas no permita voltear otra más
+    //setTimeout()método llama a una función después de una cantidad de milisegundos.
+    //1 segundo = 1000 milisegundos.
+      setTimeout(()=> {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+        resetCards();
+      }, 800);  
     }
-     [firstCard,secondCard,lockCard] = [null, null, false];   
-  } 
-} 
-  cards.forEach(card => {
-    card.addEventListener('click', flipCard)
-});
+ //Vuelven a su posicion original las cartas que no hacen match
+  function resetCards(isMatch = false){
+    if(isMatch){
+      firstCard.removeEventListener('click', flipCard);
+      secondCard.removeEventListener('click', flipCard); 
+      }
+      [firstCard,secondCard,lockCard] = [null, null, false]; // permite desbloquear las demas cartas 
+    } 
+   
+    cards.forEach(card => {
+      card.addEventListener('click', flipCard)
+  });
 
 
 

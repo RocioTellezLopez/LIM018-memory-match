@@ -36,10 +36,11 @@ const App = () => {
 
   let webdevArray = webdev.items
   let dobleItems = webdevArray.concat(webdevArray)
+  console.log(dobleItems);
 
   // Barajar cartas
-  dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
-  console.log(dobleItems);
+  //dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
+  //console.log(dobleItems);
 
   // mostrar imagenes en tablero 
   dobleItems.forEach(mostrarCartas => {
@@ -47,7 +48,7 @@ const App = () => {
 
     let memoryCard = document.createElement('div');
     memoryCard.className = 'memoryCard'
-    memoryCard.id = mostrarCartas.id
+    //memoryCard.id = mostrarCartas.id
     memoryCard.setAttribute('data-card', mostrarCartas.id)
     cardBoard.appendChild(memoryCard)
    
