@@ -16,7 +16,7 @@
 //Prueba de rama compartida para la funcion flip match
 
 import webdev from '../data/webdev/webdev.js';
-console.log(webdev.items);
+
 
 const saludoUsuario = () =>{
   //let botonAJugar = document.getElementById('botonAjugar')
@@ -31,8 +31,12 @@ const saludoUsuario = () =>{
     return
   
 }
+
+
 let clickCartas = []
 const App = () => {
+
+
   const el = document.createElement('div');
   el.className = 'App';
   //el.textContent = 'Hola mundo!';
@@ -50,7 +54,7 @@ const App = () => {
 
   // Barajar cartas
   dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
-  console.log(dobleItems);
+  //console.log(dobleItems);
 
   // mostrar imagenes en tablero 
   dobleItems.forEach(mostrarCartas => {
@@ -80,39 +84,29 @@ const App = () => {
 
     memoryCard.addEventListener('click', flip)
 
-    function flip() {
+    function flip(e) {
       memoryCard.classList.add('flip')
       
       if (clickCartas.length < 2) {
-        clickCartas.push(memoryCard.getAttribute('id'))
-        console.log(clickCartas)
-        if( clickCartas.length === 2) {
-          if (clickCartas[0] === clickCartas[1]){
-            console.log('hiciste match')
-            //console.log(clickCartas)
-            clickCartas = []
-          }
-          else if (clickCartas[0] !== clickCartas[1]){
-            console.log('no hiciste match')
-            
-            setTimeout(() => {
-              //let noMatch = clickCartas[0] !== clickCartas[1]
-              //let match = clickCartas[0] === clickCartas[1]
-              //noMatch.classList.remove('flip')
-              //match.classList.remove('flip')
-              memoryCard.classList.remove('flip')
-              //console.log(memoryCard)
-            },1000)
-            clickCartas = []
-          }
-        }
 
+        clickCartas.push(e.currentTarget)
+      }
+      if( clickCartas.length === 2) {
 
+        if (clickCartas[0].getAttribute('id') === clickCartas[1].getAttribute('id')){
+          console.log('hiciste match')
         
-      //let firstCard = memoryCard.getAttribute('id')
-      //let secondCard = memoryCard.getAttribute('id')
-      //clickCartas.push(firstCard)
-        console.log(clickCartas)
+          clickCartas = []
+        } else if (clickCartas[0].getAttribute('id') !== clickCartas[1].getAttribute('id')){
+          console.log('no hiciste match')
+          setTimeout(() => {
+            //console.log(clickCartas[0])
+            //console.log(clickCartas[1])
+            clickCartas[0].classList.remove('flip')
+            clickCartas[1].classList.remove('flip')
+            clickCartas = []
+          },800)
+        }
       }
 
     }
