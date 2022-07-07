@@ -221,7 +221,7 @@ div .memoryCard {
 }
 
 .flipNoMatch {
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
 }
 
 /*.front-face{
