@@ -31,7 +31,7 @@ const saludoUsuario = () =>{
     return
   
 }
-
+let clickCartas = []
 const App = () => {
   const el = document.createElement('div');
   el.className = 'App';
@@ -58,6 +58,9 @@ const App = () => {
 
     let memoryCard = document.createElement('div');
     memoryCard.className = 'memoryCard'
+    memoryCard.id = mostrarCartas.id
+    
+    memoryCard.setAttribute('data-card', mostrarCartas.id)
     cardBoard.appendChild(memoryCard)
   
     let divIconos = document.createElement('img');
@@ -76,8 +79,42 @@ const App = () => {
     // Agrege addEventListener y defini la funcion flip
 
     memoryCard.addEventListener('click', flip)
+
     function flip() {
       memoryCard.classList.add('flip')
+      
+      if (clickCartas.length < 2) {
+        clickCartas.push(memoryCard.getAttribute('id'))
+        console.log(clickCartas)
+        if( clickCartas.length === 2) {
+          if (clickCartas[0] === clickCartas[1]){
+            console.log('hiciste match')
+            //console.log(clickCartas)
+            clickCartas = []
+          }
+          else if (clickCartas[0] !== clickCartas[1]){
+            console.log('no hiciste match')
+            
+            setTimeout(() => {
+              //let noMatch = clickCartas[0] !== clickCartas[1]
+              //let match = clickCartas[0] === clickCartas[1]
+              //noMatch.classList.remove('flip')
+              //match.classList.remove('flip')
+              memoryCard.classList.remove('flip')
+              //console.log(memoryCard)
+            },1000)
+            clickCartas = []
+          }
+        }
+
+
+        
+      //let firstCard = memoryCard.getAttribute('id')
+      //let secondCard = memoryCard.getAttribute('id')
+      //clickCartas.push(firstCard)
+        console.log(clickCartas)
+      }
+
     }
 
   });
