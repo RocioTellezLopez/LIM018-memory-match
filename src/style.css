@@ -220,10 +220,6 @@ div .memoryCard {
     transform: rotateY(180deg);
 }
 
-.flipNoMatch {
-    transform: rotateY(0deg);
-}
-
 /*.front-face{
     transform: rotateY(180deg);
 }*/
