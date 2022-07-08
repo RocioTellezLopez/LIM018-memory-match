@@ -64,7 +64,6 @@ const App = () => {
     memoryCard.className = 'memoryCard'
     memoryCard.id = mostrarCartas.id
     
-    memoryCard.setAttribute('data-card', mostrarCartas.id)
     cardBoard.appendChild(memoryCard)
   
     let divIconos = document.createElement('img');
