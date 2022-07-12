@@ -23,22 +23,50 @@ const saludoUsuario = () =>{
     let nombreUsuario = document.getElementById('nombreUsuario').value
     let saludoUsuario = document.getElementById('saludoUsuario')
     
+  
+
     if (nombreUsuario !== '') {
       saludoUsuario.innerHTML = `Hola ${nombreUsuario.toUpperCase()}!`
+      primeraPantalla.style.display = 'none'
+      segundaPantalla.style.display = 'block'
     } else {
       alert('No ingresaste tu nombre :D!')
     }
-    return
+   return
   
 }
 
+  document.getElementById('jugar').addEventListener("click", ()=>{   
+    document.getElementById("div-boton").style.display = 'none';
+    //document.getElementById('primeraPantalla').style.display = 'none';
+    document.getElementById('segundaPantalla').style.display = 'block';
+  })
+
+
+
+const match= () =>{
+  let classMatch = document.getElementsByClassName('flip')
+  if(classMatch.length === 20){
+    document.getElementById('vModal').style.display = 'block';
+  }
+}
+
+  document.getElementById('volver').addEventListener('click', ()=>{
+    document.getElementById('vModal').style.display = 'none';
+    document.getElementById('segundaPantalla').style.display = 'none';
+    document.getElementById('primeraPantalla').style.display = 'block';
+  })
+
+
+     
+      
 
 let clickCartas = []
 const App = () => {
 
 
   const el = document.createElement('div');
-  el.className = 'App';
+  el.id = 'App';
   //el.textContent = 'Hola mundo!';
 
   //saludo usuario
@@ -51,7 +79,7 @@ const App = () => {
 
   let webdevArray = webdev.items
   let dobleItems = webdevArray.concat(webdevArray)
-
+  console.log(dobleItems)
   // Barajar cartas
   dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
   //console.log(dobleItems);
@@ -63,7 +91,6 @@ const App = () => {
     let memoryCard = document.createElement('div');
     memoryCard.className = 'memoryCard'
     memoryCard.id = mostrarCartas.id
-    
     cardBoard.appendChild(memoryCard)
   
     let divIconos = document.createElement('img');
@@ -72,6 +99,8 @@ const App = () => {
     divIconos.src = imagenesCartas
     divIconos.alt = mostrarCartas.id
     memoryCard.appendChild(divIconos)
+
+   
 
     /*let divIconos2 = document.createElement('img');
     divIconos2.className ='back-face' 
@@ -94,6 +123,7 @@ const App = () => {
 
         if (clickCartas[0].getAttribute('id') === clickCartas[1].getAttribute('id')){
           console.log('hiciste match')
+          setTimeout(match,700)
         
           clickCartas = []
         } else if (clickCartas[0].getAttribute('id') !== clickCartas[1].getAttribute('id')){
@@ -109,9 +139,54 @@ const App = () => {
       }
 
     }
+    
 
   });
   return el;
 };
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+/*//Para acceder al modal
+const modal =document.getElementById('modal');
+//Para acceder al boton de volver a jugar
+const reset = document.querySelector('.reset-btn')
+//Para acceder al boton de Play Again
+const playAgain = document.querySelector('.play-again-btn')
+
+
+function AddStats(){
+  const stats = document.querySelector('.modal-content')
+  for (let i = 1; i<=3; i++){
+    const statsElement = document.createElement('p')
+    statsElement.classList.add('stats');
+    stats.appendChild(statsElement);
+  }
+  let p = stats.querySelectorAll('p.stats');
+  p[0].innerHTML = 'Time to complete:' + minutes + 'Minutes and'+ seconds + 'Seconds';
+  p[1].innerHTML = 'Moves Taken'+moves;
+  p[2].innerHTML = 'Your Star Rating is:'+startCount + 'out of 3';
+}
+function displayModal(){
+    const modalClose = document.getElementsByClassName('close')[0]
+    modalClose.style.display = 'block'
+    modalClose.onclick = function(){
+      modalClose.style.display ='none'  
+    };
+    window.onclick = function(event){
+      if(event.target == modal){
+        modal.style.display = 'none'
+      }
+    };
+  }*/
