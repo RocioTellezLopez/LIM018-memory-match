@@ -70,8 +70,16 @@ const App = () => {
   //el.textContent = 'Hola mundo!';
 
   //saludo usuario
+<<<<<<< HEAD
   document.getElementById('botonAJugar').addEventListener('click', saludoUsuario)    
 
+=======
+  document.addEventListener("click", function(){
+    let nombre = document.querySelector('#nombre').value
+    document.getElementById("usuario").innerHTML = 'Hola ' + nombre;
+  });    
+  
+>>>>>>> Rama-Pamela
   //crear tablero 
   let cardBoard = document.createElement('div');
   cardBoard.className = 'cardBoard'
@@ -79,9 +87,16 @@ const App = () => {
 
   let webdevArray = webdev.items
   let dobleItems = webdevArray.concat(webdevArray)
+<<<<<<< HEAD
   console.log(dobleItems)
   // Barajar cartas
   dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
+=======
+  console.log(dobleItems);
+
+  // Barajar cartas
+  //dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
+>>>>>>> Rama-Pamela
   //console.log(dobleItems);
 
   // mostrar imagenes en tablero 
@@ -90,11 +105,21 @@ const App = () => {
 
     let memoryCard = document.createElement('div');
     memoryCard.className = 'memoryCard'
+<<<<<<< HEAD
     memoryCard.id = mostrarCartas.id
+=======
+    //memoryCard.id = mostrarCartas.id
+    memoryCard.setAttribute('data-card', mostrarCartas.id)
+>>>>>>> Rama-Pamela
     cardBoard.appendChild(memoryCard)
-  
+   
     let divIconos = document.createElement('img');
+<<<<<<< HEAD
     divIconos.className ='front-face'
+=======
+    divIconos.className ='front-face' 
+    divIconos.alt = mostrarCartas.id
+>>>>>>> Rama-Pamela
     divIconos.style.backgroundColor = mostrarCartas.bgColor
     divIconos.src = imagenesCartas
     divIconos.alt = mostrarCartas.id
@@ -158,6 +183,7 @@ export default App;
 
 
 
+<<<<<<< HEAD
 /*//Para acceder al modal
 const modal =document.getElementById('modal');
 //Para acceder al boton de volver a jugar
@@ -190,3 +216,5 @@ function displayModal(){
       }
     };
   }*/
+=======
+>>>>>>> Rama-Pamela
