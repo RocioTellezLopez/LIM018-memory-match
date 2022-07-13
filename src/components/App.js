@@ -28,7 +28,11 @@ import webdev from '../data/webdev/webdev.js'
 );*/
 //console.log(array2)
 
+//Craer imagen de primera pantalla
 
+//let imgPrincipal = document.createElement('img')
+//imgPrincipal.setAttribute('src', '../data/mm.jpg')
+//primeraPantalla.appendChild(imgPrincipal)
 
 
 //let mostrarData = document.getElementById('root')
@@ -36,6 +40,7 @@ import webdev from '../data/webdev/webdev.js'
 //console.log(webdev.items[0].image)
 
 //document.getElementById("image").src = webdev.items[0].image
+let clickImg=[]
 
 const App = () => {
 
@@ -56,6 +61,7 @@ const App = () => {
     //Crear un contenedor de imágenes
     let contenedorImagenes=document.createElement("div")
     contenedorImagenes.className="contenedorImagenes"
+    contenedorImagenes.id = distribuirCartas[i].id
     root.appendChild(contenedorImagenes)
 
     //Crear un FrontFace
@@ -85,11 +91,39 @@ const App = () => {
     imgBackFace.setAttribute('src', '../data/images.png')
     backFace.appendChild(imgBackFace)
 
-    contenedorImagenes.addEventListener('click', saludo)
-    function saludo(){
+    contenedorImagenes.addEventListener('click', flip)
+    function flip(e){
       contenedorImagenes.classList.add('flip')
       //console.log('Hola');
+      
+      if(clickImg.length < 2){
+        clickImg.push(e.currentTarget)
+        console.log(clickImg)
+        
+      }
+        if(clickImg.length === 2){
+          if(clickImg[0].getAttribute('id') === clickImg[1].getAttribute('id')){
+            console.log('Hiciste Match')
+
+            clickImg = []
+          }
+          else if(clickImg[0].getAttribute('id') !== clickImg[1].getAttribute('id')){
+            console.log('No hiciste Match')
+
+            const timeFlipMatchImg =  setTimeout(flipMatchImg, 500);
+
+            function flipMatchImg(){
+              clickImg[0].classList.remove('flip')
+              clickImg[1].classList.remove('flip')
+              clickImg = []
+            }
+          }
+          
+      }
     }
+
+    //window.addEventListener('hashchange', () => console.log(window.location.hash))
+    
     //crear etiquetas para duplicar las cartas
     /*let dobleImagenes = document.createElement("img")
     document.getElementById('root').appendChild(dobleImagenes)

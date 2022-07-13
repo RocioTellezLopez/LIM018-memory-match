@@ -5,34 +5,43 @@
     <title>Memory Match</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <header>
-      <h1>Hola usuario<p id="usuario"></p></h1>
+      <!--<h1>Hola usuario<p id="usuario"></p></h1>-->
     </header>
 
     <main>
       <section class="primeraPantalla" id="primeraPantalla">
-
-      </section>
-
-      <section>
-        <ul>
-          <p>Movimientos: 0</p>
-          <p>Puntaje: 0</p>
-          <p>Tiempo: 0</p>
-        </ul>
-
+        <div class="img_h1">
+          <h1>Memory Match</h1>
+          <img src="data/mm.jpg" alt="" id="imagenPrincipal">
+        </div>
+        <div class="div_nombreUsuario">
+          <input id="nombreUsuario" class="nombreUsuario" type="text" placeholder="Ingresa tu nombre">
+          <button type="submit" class="btnInicio"><a href="#/"></a>Start</button>
+        </div>
       </section>
 
       <section class="segundaPantalla" id="segundaPantalla">
-        <div id='root'></div>
-        <div class="imagenes">
-          <!--<img id="image">-->
-          <!--<div class="frontCard"></div>
-          <div class="backCard"></div>-->
-        </div>
+        <section class="div_boton" id="div_boton">
+          <a href="#/segundaPantalla"></a>
+        <section>
+          <ul>
+            <p>Movimientos: 0</p>
+            <p>Puntaje: 0</p>
+            <p>Tiempo: 0</p>
+          </ul>
+
+        </section>
+
+        <section >
+          <div id='root'></div>
+        
+          </div>
+        </section>
       </section>
-    
+      </section>
     </main>
     <footer></footer>
     <script src="main.js" type="module"></script>
