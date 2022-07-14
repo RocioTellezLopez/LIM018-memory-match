@@ -61,9 +61,9 @@ const match= () =>{
      
       
 
-let clickCartas = []
-const App = () => {
 
+const App = () => {
+  let clickCartas = []
 
   const el = document.createElement('div');
   el.id = 'App';
@@ -113,11 +113,12 @@ const App = () => {
     memoryCard.addEventListener('click', flip)
 
     function flip(e) {
-      memoryCard.classList.add('flip')
-      
-      if (clickCartas.length < 2) {
+      //memoryCard.classList.add('flip')
 
+      if (clickCartas.length < 2) {
+        memoryCard.classList.add('flip')
         clickCartas.push(e.currentTarget)
+        console.log(clickCartas)
       }
       if( clickCartas.length === 2) {
 
@@ -131,10 +132,15 @@ const App = () => {
           setTimeout(() => {
             //console.log(clickCartas[0])
             //console.log(clickCartas[1])
-            clickCartas[0].classList.remove('flip')
-            clickCartas[1].classList.remove('flip')
+            try {
+              clickCartas[0].classList.remove('flip')
+              clickCartas[1].classList.remove('flip')
+            }
+            catch (error){
+              console.log('error de click', error)
+            }
             clickCartas = []
-          },800)
+          },1000)
         }
       }
 
