@@ -13,21 +13,33 @@ main, .primeraPantalla, .segundaPantalla {
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: relative;
+    /* position: relative; */
 }
 
 /*------Primera Pantalla-----*/
-.img h1{
-    font-size: 35px;
+.img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* font-size: 35px;
     color: white;
     text-align:center;
     position: relative;  
     left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);  
+    top: 50%; */
+    /* transform: translateX(-50%) translateY(-50%);   */
 }
 
+h1 {
+    font-size: 35px;
+    color: white;
+    text-align:center;
+    position: absolute;
+    top: 50%;
 
+}
 
 .name{
     border-radius: 10px;
