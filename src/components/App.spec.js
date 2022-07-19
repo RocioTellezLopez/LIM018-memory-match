@@ -17,7 +17,7 @@ describe('dataDoble', () => {
   })
   it('deberia devolver una cadena de longitud 20', () => {
     const webdevItems = webdev.items
-    expect(dataDoble(webdevItems).length).toBe(20)
+    expect(dataDoble(webdevItems)).toHaveLength(20)
   })
 })
 
@@ -28,7 +28,16 @@ describe('shuffle', () => {
   })
   it('deberia devolver un arreglo sin modificar su longitud', () => {
     const webdevItems = webdev.items
-    expect(shuffle(webdevItems).length).toBe(10)
+    expect(shuffle(webdevItems)).toHaveLength(10)
+  })
+  it('deberia devolver un arreglo con diferentes posiciones', () => {
+    const arrayOriginal = [1,2,3,4,5,6];
+    // console.log(arrayOriginal)
+    const arrayRandom = shuffle(arrayOriginal);
+    // console.log(arrayRandom);
+    // console.log('array original', arrayOriginal)
+    // expect(arrayRandom).not.toEqual([1,2,3]);
+    expect(shuffle(arrayOriginal)).not.toEqual(arrayRandom)
   })
 })
 
