@@ -3,10 +3,7 @@
 // JavasSript que contenga el `export` correspondiente...
 //
 // import pokemon from '../data/pokemon/pokemon.js';
-
-// importo la data de webdev
-import webdev from '../data/webdev/webdev.js' 
-//
+// console.log(pokemon);
 // O alternativamente podríamos cargar el JSON de forma asíncrona usando
 // `fetch` en el momento que consideremos necesario.
 //
@@ -15,73 +12,141 @@ import webdev from '../data/webdev/webdev.js'
 //   .then(console.log)
 //   .catch(console.error);
 
-//------Duplicar data 
-let arrayWebdev = webdev.items
-let arrayDoble = arrayWebdev.concat(arrayWebdev)
-//console.log(arrayDoble)
+//-----Inicio de Memory Match
+//Prueba de rama compartida para la funcion flip match
 
-//------Funcion mezclar cartas Fisher-Yates
-const shuffle = (array) => {
-  for (let i = array.length - 1; i > 0; i--) { // Bucle para pasar por todos los elementos del array, empezando desde el ultimo elemento.
-    let j = Math.floor(Math.random() * (i + 1)) // El metodo Math.random() devuele un numero aleatorio entre el 0 y 1, Math.floor devuelve el maximo entero menor o igual a un numero (si es 5.99 devolvera 5)
-    let temp = array[i]
-    array[i] = array[j]
-    array[j] = temp
+import webdev from '../data/webdev/webdev.js';
+
+export const dataDoble = (arrayData) => {
+  let dataDoble = arrayData.concat(arrayData);
+  return dataDoble
+};
+// console.log(dataDoble([1,2,3]))
+
+export const shuffle = (arrayData) => {
+  //console.log('entro de shuffle', arrayData)
+  let dataCopy = arrayData.slice();
+  for(let i = dataCopy.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [dataCopy[i],dataCopy[j]] = [dataCopy[j],dataCopy[i]];
   }
-  return array
-}
-//let arrayExam = ['carro','dos','tres','cuatro','cinco','seis']
-//console.log(shuffle(arrayExam))
+  // console.log('despues de shuffle', arrayData, dataCopy)
+  return dataCopy
+};
 
-let arrayRandom = shuffle(arrayDoble)
-//console.log(arrayRandom)
+const saludoUsuario = () =>{
+  //let botonAJugar = document.getElementById('botonAjugar')
+  let nombreUsuario = document.getElementById('nombreUsuario').value;
+  let saludoUsuario = document.getElementById('saludoUsuario');
+    
+  if (nombreUsuario !== '') {
+    saludoUsuario.innerHTML = `Hola ${nombreUsuario.toUpperCase()}!`;
+    let primeraPantalla = document.getElementById('primeraPantalla');
+    let segundaPantalla = document.getElementById('segundaPantalla');
+    primeraPantalla.style.display = 'none';
+    segundaPantalla.style.display = 'block';
 
-//----- Creando etiquetas div y img
+    let botonJugar = document.getElementById('jugar');
+    botonJugar.addEventListener('click', () => {
+      let divBoton = document.getElementById('div-boton');
+      let primeraPantalla = document.getElementById('primeraPantalla');
+      let segundaPantalla = document.getElementById('segundaPantalla');
+      divBoton.style.display = 'none';
+      primeraPantalla.style.display = 'none';
+      segundaPantalla.style.display = 'block';
+    })
+  } else {
+    alert('No ingresaste tu nombre :D!');
+  }
+};
 
-const divCard = document.createElement('div')
-divCard.className = 'divCartas'
+const match= () =>{
+  let classMatch = document.getElementsByClassName('flip');
+  if(classMatch.length === 20){
+    let vModal = document.getElementById('vModal');
+    let primeraPantalla = document.getElementById('primeraPantalla');
+    let segundaPantalla = document.getElementById('segundaPantalla');
+    vModal.style.display = 'block';
 
-arrayRandom.forEach(element => {
-  let imgCard = element.image
-  //console.log(imagenesCartas)
-  let divIcons = document.createElement('img')
-  divIcons.src = imgCard
-  divIcons.className = 'estiloCartas'
-  
-  divCard.appendChild(divIcons)
-//console.log(imagenesCartas)
-})
+    let botonVolver = document.getElementById('volver');
+    botonVolver.addEventListener('click',() => {
+      vModal.style.display = 'none';
+      segundaPantalla.style.display = 'none';
+      primeraPantalla.style.display = 'block';
+    })
+  }
+};
 
-//---------
-const usuario = (nombre) => {
-  let usuarioId = prompt('Ingresa tu nombre')
-  let usuario = document.getElementById('usuario')
-  usuario.innerHTML = usuarioId
-
-  return  usuario
-}
-
-
-/*function usuario() {
-  //let botonAJugar = document.getElementById('botonAJugar')
-
-  //.addEventListener ('click', () =>{
-    let usuarioId = document.getElementById('userName').value
-    let usuario = document.getElementById('usuario')
-    usuario.innerHTML = usuarioId
-  //})
-}*/
-
-//--------
 const App = () => {
+  let clickCartas = [];
   const el = document.createElement('div');
+  el.id = 'App';
   //el.textContent = 'Hola mundo!';
-  //return el;
+
+  //saludo usuario
+  document.getElementById('botonAJugar').addEventListener('click', saludoUsuario);
+  //crear tablero 
+  let cardBoard = document.createElement('div');
+  cardBoard.className = 'cardBoard';
+  el.appendChild(cardBoard);
+
+  let webdevArray = webdev.items;
+  let dobleItems = dataDoble(webdevArray);
+  // console.log(dobleItems)
+  // Barajar cartas
+  dobleItems = shuffle(dobleItems);
+  //dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
+  // console.log(dobleItems);
+
+  // mostrar imagenes en tablero 
+  dobleItems.forEach(mostrarCartas => {
+    let imagenesCartas = mostrarCartas.image;
+
+    let memoryCard = document.createElement('div');
+    memoryCard.className = 'memoryCard';
+    // memoryCard.id = mostrarCartas.id
+    memoryCard.setAttribute('name', mostrarCartas.id);
+    cardBoard.appendChild(memoryCard);
   
-  el.appendChild(divCard)
+    let divIconos = document.createElement('img');
+    divIconos.className ='front-face';
+    divIconos.style.backgroundColor = mostrarCartas.bgColor;
+    divIconos.src = imagenesCartas;
+    divIconos.alt = mostrarCartas.id;
+    memoryCard.appendChild(divIconos);
+    //--- Función Flip Match
+    // Agrege addEventListener y defini la funcion flip
 
-  usuario()
+    memoryCard.addEventListener('click', flip);
 
+    function flip(e) {
+      //memoryCard.classList.add('flip')
+
+      if (clickCartas.length < 2) {
+        memoryCard.classList.add('flip');
+        clickCartas.push(e.currentTarget);
+        //console.log(clickCartas)
+        
+        if ( clickCartas.length === 2) {
+          
+          if (clickCartas[0].getAttribute('name') === clickCartas[1].getAttribute('name')){
+            console.log('hiciste match');
+            setTimeout(match,700);
+          
+            clickCartas = [];
+          } else if (clickCartas[0].getAttribute('name') !== clickCartas[1].getAttribute('name')){
+            console.log('no hiciste match')
+
+            setTimeout(() => {
+              clickCartas[0].classList.remove('flip')
+              clickCartas[1].classList.remove('flip')
+              clickCartas = []
+            },1000)
+          }
+        }
+      }
+    }
+  });
   return el;
 };
 

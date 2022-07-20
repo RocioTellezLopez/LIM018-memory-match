@@ -3,49 +3,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-}
-
-.App {
-    /*background-color: bisque;*/
-}
-
-.estiloCartas {
-    width: 75px;
-    margin: 5px;
-    padding: 10px;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(50, 50, 60);
-    border-radius: 5px;
-    
-}
-
-.img p{
     font-family: 'Yatra One', cursive;
+    
+}
+
+main, .primeraPantalla, .segundaPantalla {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/*------Primera Pantalla-----*/
+.img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h1 {
     font-size: 35px;
     color: white;
     text-align:center;
-    position: relative;  
-    left: 50%;
+    position: absolute;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);  
 }
 
-
-.input{
-    width: 100%;
-    padding: 90px;
-    background-color: #E7C515;
-    text-align: center;   
-}
-
-h2{
-    font-size: large;
-    font-family: 'Yatra One', cursive;
-    right: 30px;
-    
-}
 .name{
     border-radius: 10px;
     border-radius: none;
@@ -54,194 +40,206 @@ h2{
     text-align: center;
     margin: 0px auto;
     padding: 10px;
-    font-family: 'Yatra One', cursive;
     font-size: 15px;
+}
+
+.input{
+    width: 100%;
+    padding: 90px;
+    background-color: #E7C515;
+    text-align: center;   
 }
 
 .boton{
     background-color: red;
     width: 150px;
     height: 45px;
-    color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
     font-size: 15px;
     padding: 5px;
     text-align: center;
-    font-family: 'Yatra One', cursive;
     font-size: 18px;
+}
+
+#botonAJugar {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }
 
 .boton:hover{
     background-color: rgb(216, 69, 69);
-   
 }
 
-.estiloCartas {
-    width: 70px;
-    margin: 5px;
-    padding: 10px;
-
-    align-items: center;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(50, 50, 60);
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/*------Segunda Pantalla-----*/
 header {
     position: relative;
-    height: 100%;
-    /*background-color: aquamarine;*/
+    height: 10%;
     text-align: center;   
 }
 
-main {
-   
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-h1{
+h2{
     font-size:45px;
-    justify-content: center;
-    display: block;
-    font-family: 'Yatra One', cursive;
     color: red;
     margin-top: 40px;
-
 }
 
-ul {
+.tableroPuntaje ul {
     width: 430px;
     height: 60px;
     background-color:#E7C515;
     border-radius: 10px;
     margin: 20px;
     padding: 20px;
-    /*margin-left: 450px;*/
-    font-family: 'Yatra One', cursive;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
+    margin: auto;
 }
 
+#root {
+    width: 100%;
+    align-items: center;
+}
 
-/*
-#cardboard{
-    width: 640px;
-    height: 640px;
-    margin: auto;
+#App{
+    width: 700px;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
-
-}
-
-.memory-card{
-    width: 25%;
-    height: 33%;
-    margin: 5px;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    margin: auto; 
 }
 
-.front-face,
-.back-face{
-    width: 100%;
-    height: 100%;
-    background: #675a10;
-    position: absolute;
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-.estiloCartas {
+.cardBoard {
+    width: 500px;
+    height: 440px;
     display: flex;
-    width: 110px;
-    margin: 5px;
-    padding: 5px;
-    
-    background-color: rgb(255, 255, 255);
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(173, 183, 183);
+    border-radius: 10px;
+}
+
+.memoryCard {
+    width: 80px;
+    height: 80px;
     border: 1px solid rgb(50, 50, 60);
     border-radius: 5px;
-    
-}
-
- div .divCartas {/* contenedor de cartas*/
+    margin: 10px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-wrap: wrap;
-    width: 45%;
-    height: 30%;
-    /*flex-flow: row wrap;*/
-    justify-content: space-around;
-    align-content: center;
-    gap: 15px;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid rgb(121, 121, 121);
-    border-radius: 8px;
-    background-color: rgb(183, 183, 183);
-
-    
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
-
-
-
-@media (max-width: 600px) {
-  
-    div .divCartas {
-        flex: 100%;
-    }
-    .img p{
-        width: 10%;
-    }
-    .name{
-        width: 10%;
-        height: 35px;
-        font-size:5px;
-    }
-
+div .memoryCard {
+    background-image: url("https://www.seekpng.com/png/full/304-3047371_coding-icon-programming-signs.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
-@media  (max-width: 375px) {
-  
-    div .divCartas {
-        flex: 50%;
-    }
-    .estiloCartas {
-        display: flex;
-        width: 25%;
-        margin: 2px;
-        padding: 2px;  
-    }
-    .img p{
-        display: flex;
-        width: 10%;
-    }
-    .input{
-        width: 100%;
-        padding: 45px;
-       
-    }
+.front-face {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);  
+}
 
-    .name{
-        display: flex;
-        width: 10%;
-        height: 35px;
-        font-size:5px;
-    }
+.flip {
+    transform: rotateY(180deg);
+}
+
+.segundaPantalla{
+    display:none;
+}
+
+#div-boton{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.25);
+    position: absolute;
+    border-radius: 10px;
+}
+
+.jugar{
+    background-color: red;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    border: none;
+    font-size: 30px;
+    padding: 5px;
+    text-align: center;  
+}
+
+#jugar {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.jugar:hover{
+    background-color: rgb(216, 69, 69);
+}
+
+.vModal{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.5);
+    position:fixed;
+    display:none;
+}
+
+.modal-content{
+    width: 40vw;
+    height: 70vh;
+    padding: .2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7C515;
+    margin: auto;
+    margin-top:10%;  
+}
+
+.btn-volver{
+    background-color: red;
+    width: 150px;
+    height: 45px;
+    margin: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+}
+
+.btn-volver {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.btn-volver:hover{
+    background-color: rgb(216, 69, 69);
 }

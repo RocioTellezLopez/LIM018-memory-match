@@ -6,45 +6,53 @@
     <title>Memory Match</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <header>
     </header>
-
     <main>
-      <div class="img">
-        <p>MEMORY MATCH</p>
-        <img src="imagenes/baraja.jpg" alt="">
-      </div>
-          <div class="input">
-            <input type="text" class="name" id="usuario" placeholder="Write your name here">
-            <button type="submit" class="boton" id="botonAJugar">A Jugar!</button>
-          </div>
-   </main>
-
-   <header>
-    <h1>Hola <p id="usuario"></p></h1>
-  </header>
-    <main>
-  
-      <section>
-        <ul>
-          <p id = "moves">Moves: 0</p>
-          <p id = "score">Score: 0</p>
-          <p id = "timer">Time: 0</p>
-        </ul>
-
+      <section class="primeraPantalla" id="primeraPantalla">
+        <div class="img">
+          <h1>MEMORY MATCH</h1>
+          <img src="imagenes/baraja.jpg" alt="">
+        </div>
+        <div class="input">
+          <input id="nombreUsuario" class="name" type="text" placeholder="Escribe tu nombre">
+          <button type="submit" class="boton"><a href="#div-boton" id="botonAJugar">A jugar!</a></button>
+        </div>
       </section>
 
-      <section>
-        <div id="root"></div>
-        <div id="cardboard"></div>
+      <section class="segundaPantalla" id="segundaPantalla">
+        <section class="div-boton" id="div-boton">
+          <button type="submit" class="jugar"><a href="#" id="jugar">Jugar!</a></button>
+        </section>
         
-        <div id="imagenes"></div>
+        <header>
+          <h2 id="saludoUsuario"></h1> 
+        </header>
+       
+        <section class="tableroPuntaje">
+          <ul>
+            <p id = "moves">Movimientos: 0</p>
+            <p id = "score">Puntuación: 0</p>
+            <p id = "timer">Tiempo: 0</p>
+          </ul>
+        </section>
+
+        <section>
+          <div id="root"></div>
+        </section>
       </section>
-    
+
+      <section class="vModal" id="vModal">
+        <div class="modal-content" id="modal-content">
+          <h2>Ganaste !!!</h2>
+            <img class="modal-img" src="imagenes/snoopy.gif" alt="snoopy">
+            <button id="volver" class="btn-volver">Volver a jugar <a href="#"></a>  </button>
+        </div> 
+      </section>
     </main>
     <footer></footer>
     <script src="main.js" type="module"></script>
-    
   </body>
 </html>
