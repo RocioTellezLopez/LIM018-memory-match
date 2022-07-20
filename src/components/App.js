@@ -17,14 +17,27 @@
 
 import webdev from '../data/webdev/webdev.js';
 
+export const dataDoble = (data) => {
+  let dataDoble = data.concat(data)
+  return dataDoble
+};
+
+const shuffle = (data) => {
+  let copyData = data.slice()
+  for(let i = copyData.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random()*(i + 1));
+    [copyData[i], copyData[j]] = [copyData[j], copyData[i]]
+  }
+  return copyData
+};
+
+
 const match= () =>{
   let classMatch = document.getElementsByClassName('flip')
   if(classMatch.length === 4){
     document.getElementById('vModal').style.display = 'block';
   }
 }
-
-
 
 const App = () => {
   let clickCartas = []
@@ -39,10 +52,13 @@ const App = () => {
   el.appendChild(cardBoard)  
 
   let webdevArray = webdev.items
-  let dobleItems = webdevArray.concat(webdevArray)
-  console.log(dobleItems)
+  let dobleItems = dataDoble(webdevArray)
+  // console.log(dobleItems)
+
   // Barajar cartas
-  dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
+  dobleItems = shuffle(dobleItems)
+
+  // dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
   //console.log(dobleItems);
 
   // mostrar imagenes en tablero 
