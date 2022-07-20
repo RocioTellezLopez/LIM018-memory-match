@@ -17,49 +17,13 @@
 
 import webdev from '../data/webdev/webdev.js';
 
-
-const saludoUsuario = () =>{
-  //let botonAJugar = document.getElementById('botonAjugar')
-    let nombreUsuario = document.getElementById('nombreUsuario').value
-    let saludoUsuario = document.getElementById('saludoUsuario')
-    
-  
-
-    if (nombreUsuario !== '') {
-      saludoUsuario.innerHTML = `Hola ${nombreUsuario.toUpperCase()}!`
-      primeraPantalla.style.display = 'none'
-      segundaPantalla.style.display = 'block'
-    } else {
-      alert('No ingresaste tu nombre :D!')
-    }
-   return
-  
-}
-
-  document.getElementById('jugar').addEventListener("click", ()=>{   
-    document.getElementById("div-boton").style.display = 'none';
-    //document.getElementById('primeraPantalla').style.display = 'none';
-    document.getElementById('segundaPantalla').style.display = 'block';
-  })
-
-
-
 const match= () =>{
   let classMatch = document.getElementsByClassName('flip')
-  if(classMatch.length === 20){
+  if(classMatch.length === 4){
     document.getElementById('vModal').style.display = 'block';
   }
 }
 
-  document.getElementById('volver').addEventListener('click', ()=>{
-    document.getElementById('vModal').style.display = 'none';
-    document.getElementById('segundaPantalla').style.display = 'none';
-    document.getElementById('primeraPantalla').style.display = 'block';
-  })
-
-
-     
-      
 
 
 const App = () => {
@@ -68,9 +32,6 @@ const App = () => {
   const el = document.createElement('div');
   el.id = 'App';
   //el.textContent = 'Hola mundo!';
-
-  //saludo usuario
-  document.getElementById('botonAJugar').addEventListener('click', saludoUsuario)    
 
   //crear tablero 
   let cardBoard = document.createElement('div');
@@ -99,13 +60,6 @@ const App = () => {
     divIconos.src = imagenesCartas
     divIconos.alt = mostrarCartas.id
     memoryCard.appendChild(divIconos)
-
-   
-
-    /*let divIconos2 = document.createElement('img');
-    divIconos2.className ='back-face' 
-    divIconos2.setAttribute ('src', 'https://static.vecteezy.com/system/resources/previews/002/358/541/non_2x/programming-icon-free-vector.jpg');
-    memoryCard.appendChild(divIconos2)*/
 
     //--- Función Flip Match
     // Agrege addEventListener y defini la funcion flip
@@ -152,47 +106,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-/*//Para acceder al modal
-const modal =document.getElementById('modal');
-//Para acceder al boton de volver a jugar
-const reset = document.querySelector('.reset-btn')
-//Para acceder al boton de Play Again
-const playAgain = document.querySelector('.play-again-btn')
-
-
-function AddStats(){
-  const stats = document.querySelector('.modal-content')
-  for (let i = 1; i<=3; i++){
-    const statsElement = document.createElement('p')
-    statsElement.classList.add('stats');
-    stats.appendChild(statsElement);
-  }
-  let p = stats.querySelectorAll('p.stats');
-  p[0].innerHTML = 'Time to complete:' + minutes + 'Minutes and'+ seconds + 'Seconds';
-  p[1].innerHTML = 'Moves Taken'+moves;
-  p[2].innerHTML = 'Your Star Rating is:'+startCount + 'out of 3';
-}
-function displayModal(){
-    const modalClose = document.getElementsByClassName('close')[0]
-    modalClose.style.display = 'block'
-    modalClose.onclick = function(){
-      modalClose.style.display ='none'  
-    };
-    window.onclick = function(event){
-      if(event.target == modal){
-        modal.style.display = 'none'
-      }
-    };
-  }*/
