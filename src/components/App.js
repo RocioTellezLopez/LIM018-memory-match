@@ -22,7 +22,7 @@ export const dataDoble = (data) => {
   return dataDoble
 };
 
-const shuffle = (data) => {
+export const shuffle = (data) => {
   let copyData = data.slice()
   for(let i = copyData.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random()*(i + 1));
