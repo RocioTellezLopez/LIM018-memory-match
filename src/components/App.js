@@ -157,19 +157,25 @@ const App = () => {
     //modalBtnPlay.classList.remove('show');
   });
 
-  let containerModalFinal = document.getElementById('containerModalFinal');
-  let modalFinal = document.getElementById('modalFinal');
-  let btnModalFinal = document.getElementById('btnModalFinal');
+  function mostrarModal(){
 
-  btnModalFinal.addEventListener('click', () =>{
+    let totalMatch= document.getElementsByClassName('flip');
+      if (totalMatch.length === 4){
+      containerModalFinal.style.display = 'block';
+    }
+  }
+
+  let btnModalFinal = document.getElementById('btnModalFinal');
+  let containerModalFinal = document.getElementById('containerModalFinal');
+
+    btnModalFinal.addEventListener('click', () =>{
+    containerModalFinal = document.getElementById('containerModalFinal');
+    
     containerModalFinal.style.display = 'none';
     segundaPantalla.style.display = 'none';
     primeraPantalla.style.display = 'block';
   });
 
-  const mostrarModal = () => {
-    
-  }
   //et num1 = ["a","b","c"]
   //let num = [1,2,3,4,5]
  
