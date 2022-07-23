@@ -14,34 +14,47 @@
     <main>
       <section class="primeraPantalla" id="primeraPantalla">
         <div class="img_h1">
-          <h1>Memory Match</h1>
+          <!--<h1>Memory Match</h1>-->
           <img src="data/mm.jpg" alt="" id="imagenPrincipal">
         </div>
-        <div class="div_nombreUsuario">
-          <input id="nombreUsuario" class="nombreUsuario" type="text" placeholder="Ingresa tu nombre">
-          <button type="submit" class="btnInicio"><a href="#/"></a>Start</button>
+        <div class="nombreUsuario">
+          <input id="ingresarNombre" class="ingresarNombre" type="text" placeholder="Ingresa tu nombre">
+          <button type="submit" id="btnInicio" class="btnInicio"><a href="#/"></a>Start</button>
         </div>
       </section>
 
       <section class="segundaPantalla" id="segundaPantalla">
-        <section>
-          <a href="#/segundaPantalla"></a>
-          <section>Hola</section>
+          <!--<a href="#/segundaPantalla"></a>-->
+          <div id="mostrarNombre" class="mostrarNombre"></div> 
+
         <section>
           <ul>
             <p>Movimientos: 0</p>
             <p>Puntaje: 0</p>
             <p>Tiempo: 0</p>
           </ul>
-
         </section>
 
         <section >
           <div id='root'></div>
-      
         </section>
+
+        <div id="modalBtnPlay" class="modalBtnPlay">
+          <button type="submit" id="btnPlay" class="btnPlay">PLAY</button>
+        </div> 
+        <!--<section>
+          <div class="modal" id="modal" >
+            <button type="button" class="close">Play Again</button>
+          </div>
+        </section>-->
+        <div id="containerModalFinal" class="containerModalFinal">
+          <div id="modalFinal" class="modalFinal">
+            <h1 id="youWon" class="youWon">YOU WON!</h1>
+            <button id="btnModalFinal" class=""btnModalFinal>Play again</button>
+          </div>
+        </div>
       </section>
-      </section>
+
     </main>
     <footer></footer>
     <script src="main.js" type="module"></script>

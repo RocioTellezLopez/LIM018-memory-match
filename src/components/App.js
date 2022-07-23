@@ -50,6 +50,8 @@ export function shuffle(num){
   return num;
 }
 
+
+
 const App = () => {
   //let crearEtiquetaImg = document.createElement("img")
   //document.getElementById('root').appendChild(crearEtiquetaImg)
@@ -87,7 +89,7 @@ const App = () => {
     backFace.className='backFace'
     contenedorImagenes.appendChild(backFace)
     //console.log(array1[i].image)
-    
+   
     //console.log(mostrarImagenes)
 
     //Crear imágenes del backFace
@@ -96,14 +98,14 @@ const App = () => {
     imgBackFace.setAttribute('src', '../data/images.png')
     backFace.appendChild(imgBackFace)
 
+   
     const flip = function(e){
-      contenedorImagenes.classList.add('flip')
-      //console.log('Hola');
-      
+   
       if(clickImg.length < 2){
+        contenedorImagenes.classList.add('flip')
         clickImg.push(e.currentTarget)
         //console.log(clickImg)
-        
+       
       }
         if(clickImg.length === 2){
           if(clickImg[0].getAttribute('id') === clickImg[1].getAttribute('id')){
@@ -127,6 +129,47 @@ const App = () => {
     //window.addEventListener('hashchange', () => console.log(window.location.hash))
    
   }
+ 
+
+  let btnInicio = document.getElementById('btnInicio');
+  let primeraPantalla = document.getElementById('primeraPantalla');
+  let segundaPantalla = document.getElementById('segundaPantalla');
+
+  btnInicio.addEventListener('click', () =>{
+    let ingresarNombre = document.getElementById('ingresarNombre').value;
+    let mostrarNombre = document.getElementById('mostrarNombre');
+   
+      if(ingresarNombre !== ''){
+        mostrarNombre.innerHTML = ` Hola ${ingresarNombre[0].toUpperCase()}${ingresarNombre.substring(1)}!`
+        primeraPantalla.style.display = 'none';
+        segundaPantalla.style.display = 'block';
+      }else{
+        alert('Ingresa tu nombre');
+      }
+  });
+
+  let btnPlay = document.getElementById('btnPlay');
+  let modalBtnPlay = document.getElementById('modalBtnPlay');
+
+  btnPlay.addEventListener('click', () =>{
+    modalBtnPlay.style.display = 'none';
+    segundaPantalla.style.display = 'block';
+    //modalBtnPlay.classList.remove('show');
+  });
+
+  let containerModalFinal = document.getElementById('containerModalFinal');
+  let modalFinal = document.getElementById('modalFinal');
+  let btnModalFinal = document.getElementById('btnModalFinal');
+
+  btnModalFinal.addEventListener('click', () =>{
+    containerModalFinal.style.display = 'none';
+    segundaPantalla.style.display = 'none';
+    primeraPantalla.style.display = 'block';
+  });
+
+  const mostrarModal = () => {
+    
+  }
   //et num1 = ["a","b","c"]
   //let num = [1,2,3,4,5]
  
@@ -138,6 +181,6 @@ const App = () => {
   //el.textContent = 'Hola mundo!';
 
   return el;
-}; 
+};
 
 export default App;
