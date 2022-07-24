@@ -50,6 +50,13 @@ export function shuffle(num){
   return num;
 }
 
+/*function mostrarModal(){
+  let totalMatch = document.getElementsByClassName('flip');
+    if(totalMatch.length === 2){
+      document.getElementById('containerModalFinal').style.display = 'block';
+  }
+}*/
+
 
 
 const App = () => {
@@ -125,11 +132,16 @@ const App = () => {
           }  
       }
     }
+    
     contenedorImagenes.addEventListener('click', flip)
     //window.addEventListener('hashchange', () => console.log(window.location.hash))
-   
   }
- 
+  
+  function mostrarModalFinal(){
+    let totalMatch = document.getElementsByClassName('flip');
+    if(totalMatch.length === 2)
+    document.getElementById('containerModalFinal').style.display = 'block'
+  }
 
   let btnInicio = document.getElementById('btnInicio');
   let primeraPantalla = document.getElementById('primeraPantalla');
@@ -148,32 +160,23 @@ const App = () => {
       }
   });
 
-  let btnPlay = document.getElementById('btnPlay');
   let modalBtnPlay = document.getElementById('modalBtnPlay');
-
+  let btnPlay = document.getElementById('btnPlay');
+  
   btnPlay.addEventListener('click', () =>{
     modalBtnPlay.style.display = 'none';
     segundaPantalla.style.display = 'block';
     //modalBtnPlay.classList.remove('show');
   });
-
-  function mostrarModal(){
-
-    let totalMatch= document.getElementsByClassName('flip');
-      if (totalMatch.length === 4){
-      containerModalFinal.style.display = 'block';
-    }
-  }
-
+  
+  //let containerModalFinal = document.getElementById('containerModalFinal');
+ 
   let btnModalFinal = document.getElementById('btnModalFinal');
-  let containerModalFinal = document.getElementById('containerModalFinal');
-
-    btnModalFinal.addEventListener('click', () =>{
-    containerModalFinal = document.getElementById('containerModalFinal');
-    
-    containerModalFinal.style.display = 'none';
-    segundaPantalla.style.display = 'none';
-    primeraPantalla.style.display = 'block';
+  
+    btnModalFinal.addEventListener('click', () =>{  
+      document.getElementById('containerModalFinal').style.display = 'none';
+      segundaPantalla.style.display = 'none';
+      primeraPantalla.style.display = 'block';
   });
 
   //et num1 = ["a","b","c"]
