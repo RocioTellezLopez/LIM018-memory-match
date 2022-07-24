@@ -49,7 +49,10 @@ export function shuffle(num){
   }
   return num;
 }
-
+export const dataDoble = (array1) => {
+  let dataDoble = array1.concat(array1)
+  return dataDoble
+};
 
 /*function modalGanaste(){
   let totalMatch = document.getElementsByClassName('flip');
