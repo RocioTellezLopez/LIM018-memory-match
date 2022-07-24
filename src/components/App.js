@@ -50,19 +50,20 @@ export function shuffle(num){
   return num;
 }
 
-/*function mostrarModal(){
+
+/*function modalGanaste(){
   let totalMatch = document.getElementsByClassName('flip');
-    if(totalMatch.length === 2){
-      document.getElementById('containerModalFinal').style.display = 'block';
+  if(totalMatch.length == 2){
+    document.getElementById('containerModalFinal').style.display = 'block';
   }
 }*/
-
 
 
 const App = () => {
   //let crearEtiquetaImg = document.createElement("img")
   //document.getElementById('root').appendChild(crearEtiquetaImg)
   //crearEtiquetaImg.src = webdev.items[0].image
+  
   let array1 = webdev.items
   let dobleArray= array1.concat(array1)
   let distribuirCartas = shuffle(dobleArray)
@@ -136,12 +137,6 @@ const App = () => {
     contenedorImagenes.addEventListener('click', flip)
     //window.addEventListener('hashchange', () => console.log(window.location.hash))
   }
-  
-  function mostrarModalFinal(){
-    let totalMatch = document.getElementsByClassName('flip');
-    if(totalMatch.length === 2)
-    document.getElementById('containerModalFinal').style.display = 'block'
-  }
 
   let btnInicio = document.getElementById('btnInicio');
   let primeraPantalla = document.getElementById('primeraPantalla');
@@ -170,7 +165,7 @@ const App = () => {
   });
   
   //let containerModalFinal = document.getElementById('containerModalFinal');
- 
+
   let btnModalFinal = document.getElementById('btnModalFinal');
   
     btnModalFinal.addEventListener('click', () =>{  

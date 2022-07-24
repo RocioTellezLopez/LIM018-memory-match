@@ -16,6 +16,11 @@ describe('shuffle', () => {
   it('Debe ser una función', () => {
     expect(typeof shuffle).toBe('function');
   });
+  /*it('Debe barajar las cartas', () =>{
+    for(let i = num.length-1; i>0; i--){
+      let a = Math.floor(Math.random() * (i + 1));
+    expect([1,2,3,4]).toBe([4,3,2,1]);
+  }*/
 });
 
 describe('num', () => {
