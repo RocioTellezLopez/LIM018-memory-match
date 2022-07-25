@@ -54,13 +54,25 @@ export const dataDoble = (array1) => {
   return dataDoble
 };
 
+export const dataImagenes = () => {
+  let dataImagenes = webdev.items
+  return dataImagenes
+};
+
+
+
 /*function modalGanaste(){
   let totalMatch = document.getElementsByClassName('flip');
   if(totalMatch.length == 2){
     document.getElementById('containerModalFinal').style.display = 'block';
   }
 }*/
-
+/*const modalGanaste = () => {
+  let totalMatch = document.getElementsByClassName('flip');
+  if(totalMatch.length === 2){
+    document.getElementById('containerModalFinal').style.display = 'block';
+  }
+}*/
 
 const App = () => {
   //let crearEtiquetaImg = document.createElement("img")
