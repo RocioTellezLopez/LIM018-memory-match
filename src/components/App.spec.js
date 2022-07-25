@@ -1,6 +1,6 @@
 import App from './App.js';
-import {shuffle} from './App.js';
-import {dataDoble} from './App.js';
+import {shuffle, dataDoble, dataImagenes} from './App.js';
+
 //import {items} from '../data/webdev/webdev.js'
 
 
@@ -15,14 +15,14 @@ describe('App', () => {
 });
 
 describe('shuffle', () => {
-  it('Debe ser una función', () => {
+  it('Debería ser una función', () => {
     expect(typeof shuffle).toBe('function');
   });
-  it('No debe modificar la longitud del array',()=>{
+  it('No debería modificar la longitud del array',()=>{
     const data = [1, 2, 3, 4]
     expect(shuffle(data)).toHaveLength(4);
   });
-  it('Deberìa devolver el elemento con posiciones diferentes',()=>{
+  it('Debería devolver el elemento con posiciones diferentes',()=>{
     const data = [1, 2, 3, 4]
     const dataRandom = shuffle(data)
     expect(data).not.toEqual(dataRandom);
@@ -30,15 +30,31 @@ describe('shuffle', () => {
   });
 
   describe('dataDoble', ()=>{
-    it('Deberìa duplicar la data',()=>{
+    it('Debería ser una función', () => {
+      expect(typeof dataDoble).toBe('function');
+    });
+    it('Debería duplicar la data',()=>{
       let data = dataDoble([1, 2, 3, 4])
       expect(data).toHaveLength(8);
     });
   });
 
+  describe('dataImagenes', () => {
+    it('Debería ser una función', () => {
+      expect(typeof dataImagenes).toBe('function');
+    });
+    it('Debería devolver la longitud de dataImagenes',() =>{
+      let dataImg = dataImagenes()
+      expect(dataImg).toHaveLength(10);
+    });
+    it('El item "image" debería estar dentro del array',() =>{
+      let dataImg  = dataImagenes()
+      expect(dataImg ).toHaveProperty('image');
+    });
+  });
 
   /*describe('webdev', ()=>{
-    it('El item image deberìa estar dentro del array',()=>{
+    it('El item image debería estar dentro del array',()=>{
       expect(webdev.items).toHaveProperty('image');
     });
   });*/
