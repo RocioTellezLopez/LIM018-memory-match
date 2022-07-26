@@ -21,60 +21,70 @@ export const dataDoble = (arrayData) => {
   let dataDoble = arrayData.concat(arrayData);
   return dataDoble
 };
-// console.log(dataDoble([1,2,3]))
 
 export const shuffle = (arrayData) => {
-  //console.log('entro de shuffle', arrayData)
+
   let dataCopy = arrayData.slice();
   for(let i = dataCopy.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [dataCopy[i],dataCopy[j]] = [dataCopy[j],dataCopy[i]];
   }
-  // console.log('despues de shuffle', arrayData, dataCopy)
+
   return dataCopy
 };
 
-const saludoUsuario = () =>{
-  //let botonAJugar = document.getElementById('botonAjugar')
-  let nombreUsuario = document.getElementById('nombreUsuario').value;
-  let saludoUsuario = document.getElementById('saludoUsuario');
-    
-  if (nombreUsuario !== '') {
-    saludoUsuario.innerHTML = `Hola ${nombreUsuario.toUpperCase()}!`;
-    let primeraPantalla = document.getElementById('primeraPantalla');
-    let segundaPantalla = document.getElementById('segundaPantalla');
-    primeraPantalla.style.display = 'none';
-    segundaPantalla.style.display = 'block';
+export const createCard = (card) => {
+  let cardBoard = document.createElement('div');
+  cardBoard.className = 'cardBoard';
+  for(let i = 0; i < card.length; i++) {
+    let memoryCard = document.createElement('div');
+    let cardId = card[i].id;
+    memoryCard.className = 'memoryCard'
+    memoryCard.setAttribute('name',cardId);
 
-    let botonJugar = document.getElementById('jugar');
-    botonJugar.addEventListener('click', () => {
-      let divBoton = document.getElementById('div-boton');
-      let primeraPantalla = document.getElementById('primeraPantalla');
-      let segundaPantalla = document.getElementById('segundaPantalla');
-      divBoton.style.display = 'none';
-      primeraPantalla.style.display = 'none';
-      segundaPantalla.style.display = 'block';
-    })
-  } else {
-    alert('No ingresaste tu nombre :D!');
+    let cardImg = document.createElement('img')
+    let cardUrl = card[i].image
+    cardImg.src = cardUrl
+    cardImg.className ='front-face';
+    cardImg.style.backgroundColor = card[i].bgColor;
+    cardImg.alt = card[i].id;
+
+
+    memoryCard.appendChild(cardImg)
+    cardBoard.appendChild(memoryCard)
+  }
+  return cardBoard
+};
+
+export const match = () =>{
+  let classMatch = document.getElementsByClassName('flip');
+
+  if(classMatch.length === 4){
+    let vModal = document.getElementById('vModal');
+    vModal.style.display = 'block';
+    return true
+  }
+  else {
+    return false
   }
 };
 
-const match= () =>{
-  let classMatch = document.getElementsByClassName('flip');
-  if(classMatch.length === 20){
-    let vModal = document.getElementById('vModal');
-    let primeraPantalla = document.getElementById('primeraPantalla');
-    let segundaPantalla = document.getElementById('segundaPantalla');
-    vModal.style.display = 'block';
-
-    let botonVolver = document.getElementById('volver');
-    botonVolver.addEventListener('click',() => {
-      vModal.style.display = 'none';
-      segundaPantalla.style.display = 'none';
-      primeraPantalla.style.display = 'block';
-    })
+const matchCard = (cardA, cardB) => {
+  let firstCard = cardA.getAttribute('name')
+  let secondCard = cardB.getAttribute('name')
+  if (firstCard === secondCard) {
+    console.log('Hiciste match')
+    setTimeout(() => {match()}, 800)
+    // cardA.classList.add('flip')
+    // cardB.classList.add('flip')
+  } else if (firstCard !== secondCard) {
+    console.log('No hiciste match')
+    setTimeout(() => {
+      cardA.classList.remove('flip');
+      cardB.classList.remove('flip');
+    }, 800)
   }
+  return [cardA, cardB]
 };
 
 const App = () => {
@@ -83,70 +93,36 @@ const App = () => {
   el.id = 'App';
   //el.textContent = 'Hola mundo!';
 
-  //saludo usuario
-  document.getElementById('botonAJugar').addEventListener('click', saludoUsuario);
-  //crear tablero 
-  let cardBoard = document.createElement('div');
-  cardBoard.className = 'cardBoard';
-  el.appendChild(cardBoard);
-
+  // Data webdev.items
   let webdevArray = webdev.items;
-  let dobleItems = dataDoble(webdevArray);
-  // console.log(dobleItems)
-  // Barajar cartas
-  dobleItems = shuffle(dobleItems);
-  //dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
-  // console.log(dobleItems);
 
-  // mostrar imagenes en tablero 
-  dobleItems.forEach(mostrarCartas => {
-    let imagenesCartas = mostrarCartas.image;
+  // Duplicado de data
+  let dobleItems = dataDoble(webdevArray)
 
-    let memoryCard = document.createElement('div');
-    memoryCard.className = 'memoryCard';
-    // memoryCard.id = mostrarCartas.id
-    memoryCard.setAttribute('name', mostrarCartas.id);
-    cardBoard.appendChild(memoryCard);
-  
-    let divIconos = document.createElement('img');
-    divIconos.className ='front-face';
-    divIconos.style.backgroundColor = mostrarCartas.bgColor;
-    divIconos.src = imagenesCartas;
-    divIconos.alt = mostrarCartas.id;
-    memoryCard.appendChild(divIconos);
-    //--- Función Flip Match
-    // Agrege addEventListener y defini la funcion flip
+  // Data random - Fisher Yates
+  let dataRandom = shuffle(dobleItems)
 
-    memoryCard.addEventListener('click', flip);
+  // Div para almacenar las imagenes
+  let cardBoard = createCard(dataRandom)
+  el.appendChild(cardBoard)
 
-    function flip(e) {
-      //memoryCard.classList.add('flip')
+  cardBoard.addEventListener('click', (e) => {
+    
+    if (clickCartas.length < 2) {
+      cardBoard = e.target
+      clickCartas.push(cardBoard)
+      cardBoard.classList.add('flip')
+      if (clickCartas.length === 2) {
+        let cardA = clickCartas[0]
+        let cardB = clickCartas[1]
 
-      if (clickCartas.length < 2) {
-        memoryCard.classList.add('flip');
-        clickCartas.push(e.currentTarget);
-        //console.log(clickCartas)
-        
-        if ( clickCartas.length === 2) {
-          
-          if (clickCartas[0].getAttribute('name') === clickCartas[1].getAttribute('name')){
-            console.log('hiciste match');
-            setTimeout(match,700);
-          
-            clickCartas = [];
-          } else if (clickCartas[0].getAttribute('name') !== clickCartas[1].getAttribute('name')){
-            console.log('no hiciste match')
-
-            setTimeout(() => {
-              clickCartas[0].classList.remove('flip')
-              clickCartas[1].classList.remove('flip')
-              clickCartas = []
-            },1000)
-          }
-        }
+        // console.log(cardA, cardB)
+        matchCard(cardA, cardB)
+        clickCartas = []
       }
     }
-  });
+  })
+  
   return el;
 };
 
