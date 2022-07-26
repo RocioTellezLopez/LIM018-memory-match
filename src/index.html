@@ -11,22 +11,26 @@
     <header>
     </header>
     <main>
-      <section class="primeraPantalla">
+      <section class="primeraPantalla" id="primeraPantalla">
         <div class="img">
           <h1>MEMORY MATCH</h1>
           <img src="imagenes/baraja.jpg" alt="">
         </div>
         <div class="input">
           <input id="nombreUsuario" class="name" type="text" placeholder="Escribe tu nombre">
-          <button type="submit" class="boton"><a href="#"" id="botonAJugar">A jugar!</a></button>
+          <button type="submit" class="boton"><a href="#div-boton" id="botonAJugar">A jugar!</a></button>
         </div>
       </section>
 
-      <section class="segundaPantalla">
+      <section class="segundaPantalla" id="segundaPantalla">
+        <section class="div-boton" id="div-boton">
+          <button type="submit" class="jugar"><a href="#" id="jugar">Jugar!</a></button>
+        </section>
+        
         <header>
-          <h2 id="saludoUsuario"></h1>
+          <h2 id="saludoUsuario"></h1> 
         </header>
-
+       
         <section class="tableroPuntaje">
           <ul>
             <p id = "moves">Movimientos: 0</p>
@@ -38,6 +42,14 @@
         <section>
           <div id="root"></div>
         </section>
+      </section>
+
+      <section class="vModal" id="vModal">
+        <div class="modal-content" id="modal-content">
+          <h2>Ganaste !!!</h2>
+            <img class="modal-img" src="imagenes/snoopy.gif" alt="snoopy">
+            <button id="volver" class="btn-volver">Volver a jugar <a href="#"></a>  </button>
+        </div> 
       </section>
     </main>
     <footer></footer>

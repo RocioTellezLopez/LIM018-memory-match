@@ -12,70 +12,117 @@
 //   .then(console.log)
 //   .catch(console.error);
 
-//-----Iniocio de Memory Match
+//-----Inicio de Memory Match
+//Prueba de rama compartida para la funcion flip match
 
 import webdev from '../data/webdev/webdev.js';
-console.log(webdev.items);
 
-const saludoUsuario = () =>{
-  //let botonAJugar = document.getElementById('botonAjugar')
-    let nombreUsuario = document.getElementById('nombreUsuario').value
-    let saludoUsuario = document.getElementById('saludoUsuario')
-    
-    if (nombreUsuario !== '') {
-      saludoUsuario.innerHTML = `Hola ${nombreUsuario.toUpperCase()}!`
-    } else {
-      alert('No ingresaste tu nombre :D!')
-    }
-    return
-  
-}
+export const dataDoble = (arrayData) => {
+  let dataDoble = arrayData.concat(arrayData);
+  return dataDoble
+};
 
-/*const funcionVoltear = (e) =>{
-  e.classList.toggle('flip')
-}*/
+export const shuffle = (arrayData) => {
+
+  let dataCopy = arrayData.slice();
+  for(let i = dataCopy.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [dataCopy[i],dataCopy[j]] = [dataCopy[j],dataCopy[i]];
+  }
+
+  return dataCopy
+};
+
+export const createCard = (card) => {
+  let cardBoard = document.createElement('div');
+  cardBoard.className = 'cardBoard';
+  for(let i = 0; i < card.length; i++) {
+    let memoryCard = document.createElement('div');
+    let cardId = card[i].id;
+    memoryCard.className = 'memoryCard'
+    memoryCard.setAttribute('name',cardId);
+
+    let cardImg = document.createElement('img')
+    let cardUrl = card[i].image
+    cardImg.src = cardUrl
+    cardImg.className ='front-face';
+    cardImg.style.backgroundColor = card[i].bgColor;
+    cardImg.alt = card[i].id;
+
+
+    memoryCard.appendChild(cardImg)
+    cardBoard.appendChild(memoryCard)
+  }
+  return cardBoard
+};
+
+export const match = () =>{
+  let classMatch = document.getElementsByClassName('flip');
+
+  if(classMatch.length === 4){
+    let vModal = document.getElementById('vModal');
+    vModal.style.display = 'block';
+    return true
+  }
+  else {
+    return false
+  }
+};
+
+const matchCard = (cardA, cardB) => {
+  let firstCard = cardA.getAttribute('name')
+  let secondCard = cardB.getAttribute('name')
+  if (firstCard === secondCard) {
+    console.log('Hiciste match')
+    setTimeout(() => {match()}, 800)
+    // cardA.classList.add('flip')
+    // cardB.classList.add('flip')
+  } else if (firstCard !== secondCard) {
+    console.log('No hiciste match')
+    setTimeout(() => {
+      cardA.classList.remove('flip');
+      cardB.classList.remove('flip');
+    }, 800)
+  }
+  return [cardA, cardB]
+};
 
 const App = () => {
+  let clickCartas = [];
   const el = document.createElement('div');
-  el.className = 'App';
+  el.id = 'App';
   //el.textContent = 'Hola mundo!';
 
-  //saludo usuario
-  document.getElementById('botonAJugar').addEventListener('click', saludoUsuario)    
+  // Data webdev.items
+  let webdevArray = webdev.items;
 
-  //crear tablero 
-  let cardBoard = document.createElement('div');
-  cardBoard.className = 'cardBoard'
-  el.appendChild(cardBoard)  
+  // Duplicado de data
+  let dobleItems = dataDoble(webdevArray)
 
-  let webdevArray = webdev.items
-  let dobleItems = webdevArray.concat(webdevArray)
+  // Data random - Fisher Yates
+  let dataRandom = shuffle(dobleItems)
 
-  // Barajar cartas
-  dobleItems = dobleItems.sort(()=>{return Math.random()-0.5});
-  console.log(dobleItems);
+  // Div para almacenar las imagenes
+  let cardBoard = createCard(dataRandom)
+  el.appendChild(cardBoard)
 
-  // mostrar imagenes en tablero 
-  dobleItems.forEach(mostrarCartas => {
-    let imagenesCartas = mostrarCartas.image
-
-    let memoryCard = document.createElement('div');
-    memoryCard.className = 'memoryCard'
-    cardBoard.appendChild(memoryCard)
-  
-    let divIconos = document.createElement('img');
-    divIconos.className ='front-face'
-    divIconos.style.backgroundColor = mostrarCartas.bgColor
-    divIconos.src = imagenesCartas
-    divIconos.alt = mostrarCartas.id
-    memoryCard.appendChild(divIconos)
-
-    /*let divIconos2 = document.createElement('img');
-    divIconos2.className ='back-face' 
-    divIconos2.setAttribute ('src', 'https://static.vecteezy.com/system/resources/previews/002/358/541/non_2x/programming-icon-free-vector.jpg');
-    memoryCard.appendChild(divIconos2)*/
+  cardBoard.addEventListener('click', (e) => {
     
-  });
+    if (clickCartas.length < 2) {
+      cardBoard = e.target
+      clickCartas.push(cardBoard)
+      cardBoard.classList.add('flip')
+      if (clickCartas.length === 2) {
+        let cardA = clickCartas[0]
+        let cardB = clickCartas[1]
+
+        // console.log(cardA, cardB)
+        matchCard(cardA, cardB)
+        clickCartas = []
+      }
+    }
+  })
+  
   return el;
 };
 
