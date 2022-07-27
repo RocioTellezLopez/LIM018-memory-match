@@ -39,4 +39,5 @@ botonVolver.addEventListener('click', () => {
   primeraPantalla.style.display = 'block';
   location.reload()
 })
+
 document.getElementById('root').appendChild(App());

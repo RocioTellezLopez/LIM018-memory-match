@@ -1,5 +1,5 @@
 import App from './App.js';
-import {dataDoble, shuffle} from './App.js'
+import {dataDoble, shuffle, createCard, match} from './App.js'
 import webdev from '../data/webdev/webdev.js'
 
 
@@ -19,7 +19,7 @@ describe('dataDoble', () => {
     const webdevItems = webdev.items
     expect(dataDoble(webdevItems)).toHaveLength(20)
   })
-})
+});
 
 describe('shuffle', () => {
 
@@ -32,12 +32,31 @@ describe('shuffle', () => {
   })
   it('deberia devolver un arreglo con diferentes posiciones', () => {
     const arrayOriginal = [1,2,3,4,5,6];
-    // console.log(arrayOriginal)
     const arrayRandom = shuffle(arrayOriginal);
-    // console.log(arrayRandom);
-    // console.log('array original', arrayOriginal)
-    // expect(arrayRandom).not.toEqual([1,2,3]);
     expect(shuffle(arrayOriginal)).not.toEqual(arrayRandom)
   })
+});
+
+describe('createCard', () => {
+  it('should render without crashing', () => {
+    const create = createCard(webdev.items)
+    expect(create instanceof HTMLDivElement).toBe(true);
+  });
+  it('deberia crear 10 elementos div', () => {
+    const create = createCard(webdev.items)
+    const divCreate = create.querySelectorAll('div')
+    expect(divCreate).toHaveLength(10)
+  });
+  
+});
+
+describe('match', () => {
+  it ('deberia devolver true si todas las cartas estan destapadas', () => {
+    const cardFlip = [1,2,3,4]
+    const matchAll = match(cardFlip)
+    expect(matchAll).toBe(true)
+  })
 })
+
+
 

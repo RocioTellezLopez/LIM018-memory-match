@@ -49,22 +49,18 @@ export const createCard = (card) => {
     cardImg.style.backgroundColor = card[i].bgColor;
     cardImg.alt = card[i].id;
 
-
     memoryCard.appendChild(cardImg)
     cardBoard.appendChild(memoryCard)
   }
   return cardBoard
 };
 
-export const match = () =>{
-  let classMatch = document.getElementsByClassName('flip');
-
-  if(classMatch.length === 4){
+export const match = (classFlip) =>{
+  if(classFlip.length === 4){
     let vModal = document.getElementById('vModal');
     vModal.style.display = 'block';
     return true
-  }
-  else {
+  } else {
     return false
   }
 };
@@ -74,9 +70,11 @@ const matchCard = (cardA, cardB) => {
   let secondCard = cardB.getAttribute('name')
   if (firstCard === secondCard) {
     console.log('Hiciste match')
-    setTimeout(() => {match()}, 800)
-    // cardA.classList.add('flip')
-    // cardB.classList.add('flip')
+    setTimeout(() => {
+      let classFlip = document.getElementsByClassName('flip')
+      match(classFlip)
+    }, 800)
+
   } else if (firstCard !== secondCard) {
     console.log('No hiciste match')
     setTimeout(() => {
@@ -107,7 +105,6 @@ const App = () => {
   el.appendChild(cardBoard)
 
   cardBoard.addEventListener('click', (e) => {
-    
     if (clickCartas.length < 2) {
       cardBoard = e.target
       clickCartas.push(cardBoard)
@@ -115,8 +112,6 @@ const App = () => {
       if (clickCartas.length === 2) {
         let cardA = clickCartas[0]
         let cardB = clickCartas[1]
-
-        // console.log(cardA, cardB)
         matchCard(cardA, cardB)
         clickCartas = []
       }
