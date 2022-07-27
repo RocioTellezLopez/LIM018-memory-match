@@ -23,13 +23,11 @@ export const dataDoble = (arrayData) => {
 };
 
 export const shuffle = (arrayData) => {
-
   let dataCopy = arrayData.slice();
   for(let i = dataCopy.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [dataCopy[i],dataCopy[j]] = [dataCopy[j],dataCopy[i]];
   }
-
   return dataCopy
 };
 
@@ -56,9 +54,7 @@ export const createCard = (card) => {
 };
 
 export const match = (classFlip) =>{
-  if(classFlip.length === 4){
-    let vModal = document.getElementById('vModal');
-    vModal.style.display = 'block';
+  if(classFlip.length === 20){
     return true
   } else {
     return false
@@ -72,7 +68,10 @@ const matchCard = (cardA, cardB) => {
     console.log('Hiciste match')
     setTimeout(() => {
       let classFlip = document.getElementsByClassName('flip')
-      match(classFlip)
+      if (match(classFlip)) {
+        let vModal = document.getElementById('vModal');
+        vModal.style.display = 'block';
+      }
     }, 800)
 
   } else if (firstCard !== secondCard) {
@@ -105,15 +104,18 @@ const App = () => {
   el.appendChild(cardBoard)
 
   cardBoard.addEventListener('click', (e) => {
-    if (clickCartas.length < 2) {
-      cardBoard = e.target
-      clickCartas.push(cardBoard)
-      cardBoard.classList.add('flip')
-      if (clickCartas.length === 2) {
-        let cardA = clickCartas[0]
-        let cardB = clickCartas[1]
-        matchCard(cardA, cardB)
-        clickCartas = []
+    console.log(e.target.className)
+    if (e.target.className == 'memoryCard') {
+      if (clickCartas.length < 2) {
+        cardBoard = e.target
+        clickCartas.push(cardBoard)
+        cardBoard.classList.add('flip')
+        if (clickCartas.length === 2) {
+          let cardA = clickCartas[0]
+          let cardB = clickCartas[1]
+          matchCard(cardA, cardB)
+          clickCartas = []
+        }
       }
     }
   })
