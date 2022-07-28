@@ -53,29 +53,29 @@ export const createCard = (card) => {
   return cardBoard
 };
 
-export const match = (classFlip) =>{
-  if(classFlip.length === 20){
+export const matchModal = (classFlip) =>{
+  if(classFlip.length === 4){
     return true
   } else {
     return false
   }
 };
 
-const matchCard = (cardA, cardB) => {
+export const matchCard = (cardA, cardB) => {
   let firstCard = cardA.getAttribute('name')
   let secondCard = cardB.getAttribute('name')
   if (firstCard === secondCard) {
-    console.log('Hiciste match')
+    // console.log('Hiciste match')
     setTimeout(() => {
       let classFlip = document.getElementsByClassName('flip')
-      if (match(classFlip)) {
+      if (matchModal(classFlip)) {
         let vModal = document.getElementById('vModal');
         vModal.style.display = 'block';
       }
     }, 800)
 
   } else if (firstCard !== secondCard) {
-    console.log('No hiciste match')
+    // console.log('No hiciste match')
     setTimeout(() => {
       cardA.classList.remove('flip');
       cardB.classList.remove('flip');
@@ -104,7 +104,7 @@ const App = () => {
   el.appendChild(cardBoard)
 
   cardBoard.addEventListener('click', (e) => {
-    console.log(e.target.className)
+    // console.log(e.target.className)
     if (e.target.className == 'memoryCard') {
       if (clickCartas.length < 2) {
         cardBoard = e.target
