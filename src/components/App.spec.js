@@ -3,6 +3,7 @@ import {dataDoble, shuffle, createCard, matchModal, matchCard} from './App.js'
 import webdev from '../data/webdev/webdev.js'
 
 
+
 describe('App', () => {
   it('should render without crashing', () => {
     const el = App();
@@ -63,21 +64,17 @@ describe('matchModal', () => {
 });
 
 describe('matchCard', () => {
+
   it('deberia de ser una funcion', () => {
       expect(typeof matchCard).toBe('function')
   });
 
   it ('deberia devolver un arreglo con dos nodos', () => {
     const card1 = document.createElement('div')
-    card1.setAttribute('name', 'node')
-    card1.className = 'flip'
     const card2 = document.createElement('div')
-    card2.setAttribute('name', 'Js')
-    card2.className = 'flip'
-    document.body.appendChild(card1)
-    document.body.appendChild(card2)
-    const cartas = matchCard(card1,card2)
-    expect(cartas).toHaveLength(2)
+
+    const nodoCartas = matchCard(card1,card2)
+    expect(nodoCartas).toHaveLength(2)
   });
 
   it ('deberia de no hacer match', () => {
@@ -90,7 +87,14 @@ describe('matchCard', () => {
     document.body.appendChild(div1)
     document.body.appendChild(div2)
     console.log(document.body.innerHTML)
-  })
+  });
+
+  it ('deberia remover el class flip en 1s si las cartas no coinciden', () => {
+    jest.useFakeTimers();
+    const callback = jest.fn();
+    const timeFakeRemove = matchCard(callback)
+    expect(timeFakeRemove).toBeCalled()
+  });
 
 });
 

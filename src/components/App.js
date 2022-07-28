@@ -72,14 +72,14 @@ export const matchCard = (cardA, cardB) => {
         let vModal = document.getElementById('vModal');
         vModal.style.display = 'block';
       }
-    }, 800)
+    }, 1000)
 
   } else if (firstCard !== secondCard) {
     // console.log('No hiciste match')
     setTimeout(() => {
       cardA.classList.remove('flip');
       cardB.classList.remove('flip');
-    }, 800)
+    }, 1000)
   }
   return [cardA, cardB]
 };
