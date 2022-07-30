@@ -64,7 +64,7 @@ describe('matchModal', () => {
 });
 
 describe('matchCard', () => {
-
+  
   it('deberia de ser una funcion', () => {
       expect(typeof matchCard).toBe('function')
   });
@@ -79,21 +79,34 @@ describe('matchCard', () => {
 
   it ('deberia de no hacer match', () => {
     const div1 = document.createElement('div')
-    div1.setAttribute('name', 'node')
+    div1.setAttribute('name', 'vue')
     div1.className = 'flip'
     const div2 = document.createElement('div')
-    div2.setAttribute('name', 'Js')
+    div2.setAttribute('name', 'vue')
     div2.className = 'flip'
     document.body.appendChild(div1)
     document.body.appendChild(div2)
-    console.log(document.body.innerHTML)
+    // console.log(document.body.innerHTML)
   });
 
-  it ('deberia remover el class flip en 1s si las cartas no coinciden', () => {
+  it ('deberia remover el class flip si las cartas no coinciden', () => {
     jest.useFakeTimers();
-    const callback = jest.fn();
-    const timeFakeRemove = matchCard(callback)
-    expect(timeFakeRemove).toBeCalled()
+    const div1 = document.createElement('div')
+    div1.setAttribute('name', 'node')
+    div1.classList.add('flip')
+    const div2 = document.createElement('div')
+    div2.setAttribute('name', 'Js')
+    document.body.appendChild(div1)
+    document.body.appendChild(div2)
+    matchCard(div1, div2)
+    // console.log(div1.className)
+    jest.advanceTimersByTime(1000);
+    // console.log(div1.className)
+    expect(div1.className).toBe('')
+    
+    // const callback = jest.fn();
+    // const timeFakeRemove = matchCard(callback)
+    // expect(timeFakeRemove).toBeCalled()
   });
 
 });
