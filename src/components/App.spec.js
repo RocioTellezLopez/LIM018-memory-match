@@ -52,7 +52,18 @@ describe('createCard', () => {
 
 describe('matchModal', () => {
   it ('deberia devolver true si todas las cartas estan destapadas', () => {
-    const cardFlip = [1,2,3,4]
+    const divFlip = document.createElement('div')
+    const divModal = document.createElement('div')
+    divModal.setAttribute('id', 'vModal')
+    for(let i=0; i<20; i++) {
+      const createDiv = document.createElement('div')
+      createDiv.setAttribute('class', 'flip')
+      divFlip.appendChild(createDiv)
+    }
+    document.body.appendChild(divFlip)
+    document.body.appendChild(divModal)
+    const cardFlip = document.getElementsByClassName('flip')
+
     const matchAll = matchModal(cardFlip)
     expect(matchAll).toBe(true)
   });
@@ -77,16 +88,24 @@ describe('matchCard', () => {
     expect(nodoCartas).toHaveLength(2)
   });
 
-  it ('deberia de no hacer match', () => {
+  it ('deberia de tener class flip las cartas que coincidan', () => {
+    jest.useFakeTimers();
     const div1 = document.createElement('div')
     div1.setAttribute('name', 'vue')
     div1.className = 'flip'
     const div2 = document.createElement('div')
     div2.setAttribute('name', 'vue')
     div2.className = 'flip'
+    const divModal = document.createElement('div')
+    divModal.setAttribute('class', 'flip')
     document.body.appendChild(div1)
     document.body.appendChild(div2)
-    // console.log(document.body.innerHTML)
+    document.body.appendChild(divModal)
+
+    const sameCard = matchCard(div1,div2)
+    jest.advanceTimersByTime(1000)
+    
+    expect(sameCard).toEqual([div1,div2])
   });
 
   it ('deberia remover el class flip si las cartas no coinciden', () => {
