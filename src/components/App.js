@@ -54,7 +54,6 @@ export const createCard = (card) => {
 };
 
 export const matchModal = (classFlip) =>{
-  
   if(classFlip.length === 20){
     let vModal = document.getElementById('vModal');
     vModal.style.display = 'block';
@@ -72,13 +71,7 @@ export const matchCard = (cardA, cardB) => {
     setTimeout(() => {
       let classFlip = document.getElementsByClassName('flip')
       matchModal(classFlip)
-     /*  let classFlip = document.getElementsByClassName('flip')
-      if (matchModal(classFlip)) {
-        let vModal = document.getElementById('vModal');
-        vModal.style.display = 'block';
-      } */
     }, 1000)
-
   } else if (firstCard !== secondCard) {
     // console.log('No hiciste match')
     setTimeout(() => {
