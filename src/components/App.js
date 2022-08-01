@@ -54,7 +54,9 @@ export const createCard = (card) => {
 };
 
 export const matchModal = (classFlip) =>{
-  if(classFlip.length === 4){
+  if(classFlip.length === 20){
+    let vModal = document.getElementById('vModal');
+    vModal.style.display = 'block';
     return true
   } else {
     return false
@@ -68,18 +70,14 @@ export const matchCard = (cardA, cardB) => {
     // console.log('Hiciste match')
     setTimeout(() => {
       let classFlip = document.getElementsByClassName('flip')
-      if (matchModal(classFlip)) {
-        let vModal = document.getElementById('vModal');
-        vModal.style.display = 'block';
-      }
-    }, 800)
-
+      matchModal(classFlip)
+    }, 1000)
   } else if (firstCard !== secondCard) {
     // console.log('No hiciste match')
     setTimeout(() => {
       cardA.classList.remove('flip');
       cardB.classList.remove('flip');
-    }, 800)
+    }, 1000)
   }
   return [cardA, cardB]
 };
