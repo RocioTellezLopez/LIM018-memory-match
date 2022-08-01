@@ -136,14 +136,14 @@ h2 {
 }
 
 #App {
-    height: 100%;
+    height: 100vh;
     /* position: relative; */
     margin: 1rem;
 }
 
 .cardBoard {
     width: 85vw;
-    height: 95vh;
+    /* height: 95vh; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -264,7 +264,7 @@ div .memoryCard {
 }
 
 /* Tables */
-@media (min-width: 600px) {
+@media screen and (min-width: 600px) {
 
     .memoryCard, .front-face {
         width: 90px;
@@ -272,7 +272,7 @@ div .memoryCard {
     }
     .cardBoard {
         width: 80vw;
-        height: 65vh; 
+        /* height: 65vh;  */
     }
     h1 {
         font-size: 2.5rem;
@@ -294,7 +294,7 @@ div .memoryCard {
 }
 
 /* Desktop */
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
 
     .inputName {
         width: 20vw;
