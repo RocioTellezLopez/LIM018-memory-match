@@ -4,7 +4,7 @@ let nombreUsuario = document.getElementById('nombreUsuario');
 let saludoUsuario = document.getElementById('saludoUsuario');
 let primeraPantalla = document.getElementById('primeraPantalla');
 let segundaPantalla = document.getElementById('segundaPantalla');
-let divBoton = document.getElementById('div-boton');
+let divBoton = document.getElementById('div-boton')
 
 const saludoUsu = () => {
   nombreUsuario = nombreUsuario.value
