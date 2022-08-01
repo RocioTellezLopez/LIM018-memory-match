@@ -23,13 +23,11 @@ export const dataDoble = (arrayData) => {
 };
 
 export const shuffle = (arrayData) => {
-
   let dataCopy = arrayData.slice();
   for(let i = dataCopy.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [dataCopy[i],dataCopy[j]] = [dataCopy[j],dataCopy[i]];
   }
-
   return dataCopy
 };
 
@@ -49,36 +47,35 @@ export const createCard = (card) => {
     cardImg.style.backgroundColor = card[i].bgColor;
     cardImg.alt = card[i].id;
 
-
     memoryCard.appendChild(cardImg)
     cardBoard.appendChild(memoryCard)
   }
   return cardBoard
 };
 
-export const match = () =>{
-  let classMatch = document.getElementsByClassName('flip');
-
-  if(classMatch.length === 4){
-    let vModal = document.getElementById('vModal');
-    vModal.style.display = 'block';
+export const matchModal = (classFlip) =>{
+  if(classFlip.length === 4){
     return true
-  }
-  else {
+  } else {
     return false
   }
 };
 
-const matchCard = (cardA, cardB) => {
+export const matchCard = (cardA, cardB) => {
   let firstCard = cardA.getAttribute('name')
   let secondCard = cardB.getAttribute('name')
   if (firstCard === secondCard) {
-    console.log('Hiciste match')
-    setTimeout(() => {match()}, 800)
-    // cardA.classList.add('flip')
-    // cardB.classList.add('flip')
+    // console.log('Hiciste match')
+    setTimeout(() => {
+      let classFlip = document.getElementsByClassName('flip')
+      if (matchModal(classFlip)) {
+        let vModal = document.getElementById('vModal');
+        vModal.style.display = 'block';
+      }
+    }, 800)
+
   } else if (firstCard !== secondCard) {
-    console.log('No hiciste match')
+    // console.log('No hiciste match')
     setTimeout(() => {
       cardA.classList.remove('flip');
       cardB.classList.remove('flip');
@@ -107,18 +104,18 @@ const App = () => {
   el.appendChild(cardBoard)
 
   cardBoard.addEventListener('click', (e) => {
-    
-    if (clickCartas.length < 2) {
-      cardBoard = e.target
-      clickCartas.push(cardBoard)
-      cardBoard.classList.add('flip')
-      if (clickCartas.length === 2) {
-        let cardA = clickCartas[0]
-        let cardB = clickCartas[1]
-
-        // console.log(cardA, cardB)
-        matchCard(cardA, cardB)
-        clickCartas = []
+    // console.log(e.target.className)
+    if (e.target.className == 'memoryCard') {
+      if (clickCartas.length < 2) {
+        cardBoard = e.target
+        clickCartas.push(cardBoard)
+        cardBoard.classList.add('flip')
+        if (clickCartas.length === 2) {
+          let cardA = clickCartas[0]
+          let cardB = clickCartas[1]
+          matchCard(cardA, cardB)
+          clickCartas = []
+        }
       }
     }
   })

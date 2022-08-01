@@ -8,37 +8,36 @@
   </head>
 
   <body>
-    <header>
-    </header>
     <main>
       <section class="primeraPantalla" id="primeraPantalla">
-        <div class="img">
+        <div class="blockImg">
           <h1>MEMORY MATCH</h1>
           <img src="imagenes/baraja.jpg" alt="">
         </div>
-        <div class="input">
-          <input id="nombreUsuario" class="name" type="text" placeholder="Escribe tu nombre">
-          <button type="submit" class="boton"><a href="#div-boton" id="botonAJugar">A jugar!</a></button>
+        <div class="blockInputName">
+          <input id="nombreUsuario" class="inputName" type="text" placeholder="Escribe tu nombre">
+          <button type="submit" id="botonAJugar">A jugar!</button>
         </div>
+        <footer>Elaborado en Laboratoria</footer>
       </section>
 
       <section class="segundaPantalla" id="segundaPantalla">
         <section class="div-boton" id="div-boton">
-          <button type="submit" class="jugar"><a href="#" id="jugar">Jugar!</a></button>
+          <button type="submit" class="jugar" id="jugar">Jugar!</button>
         </section>
         
         <header>
-          <h2 id="saludoUsuario"></h1> 
+          <h2 id="saludoUsuario"></h2> 
         </header>
        
         <section class="tableroPuntaje">
           <ul>
             <p id = "moves">Movimientos: 0</p>
-            <p id = "score">Puntuación: 0</p>
+            <!-- <p id = "score">Puntuación: 0</p> -->
             <p id = "timer">Tiempo: 0</p>
           </ul>
         </section>
-
+        
         <section>
           <div id="root"></div>
         </section>
@@ -52,7 +51,6 @@
         </div> 
       </section>
     </main>
-    <footer></footer>
     <script src="main.js" type="module"></script>
   </body>
 </html>
