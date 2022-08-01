@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -24,15 +25,17 @@ footer {
     padding: 0.5rem;
 }
 
-.primeraPantalla, .segundaPantalla {
+.primeraPantalla,
+.segundaPantalla {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     /* width: 100vw; */
     /* height: 95vh; */
 }
+
 /*------Primera Pantalla-----*/
 .blockImg {
     display: flex;
@@ -43,12 +46,16 @@ footer {
     height: 55vh;
 }
 
-.blockInputName{
-    width: 100%;
+.blockInputName {
+    width: 100vw;
     height: 40vh;
     padding: 5rem;
     background-color: #E7C515;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 img {
@@ -58,14 +65,14 @@ img {
 h1 {
     font-size: 2rem;
     color: white;
-    text-align:center;
+    text-align: center;
     position: absolute;
     top: 50%;
 }
 
-.inputName{
-    border-radius: 0.6rem;
-    width: 170px;
+.inputName {
+    border-radius: 10px;
+    width: 55vw;
     height: 40px;
     text-align: center;
     margin: 1rem;
@@ -73,7 +80,8 @@ h1 {
     font-size: 1rem;
 }
 
-#botonAJugar, .btn-volver{
+#botonAJugar,
+.btn-volver {
     background-color: red;
     width: 130px;
     height: 40px;
@@ -86,14 +94,14 @@ h1 {
     color: rgb(255, 255, 255);
 }
 
-#botonAJugar:hover{
+#botonAJugar:hover {
     background-color: rgb(216, 69, 69);
     cursor: pointer;
 }
 
 /*------Segunda Pantalla-----*/
 
-#div-boton{
+#div-boton {
     width: 100%;
     height: 120vh;
     display: flex;
@@ -104,10 +112,10 @@ h1 {
     background-color: rgba(34, 34, 34, 0.705);
     position: absolute;
     top: 0;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
-h2{
+h2 {
     font-size: 2.5rem;
     color: red;
     margin: 1.2rem;
@@ -117,7 +125,7 @@ h2{
 .tableroPuntaje ul {
     width: 250px;
     height: 7vh;
-    background-color:rgb(231, 197, 21);
+    background-color: rgb(231, 197, 21);
     border-radius: 10px;
     margin: auto;
     padding: 1rem;
@@ -127,15 +135,15 @@ h2{
     align-items: center;
 }
 
-#App{
+#App {
     height: 100%;
     /* position: relative; */
     margin: 1rem;
 }
 
 .cardBoard {
-    width: 320px;
-    height: 90vh;
+    width: 85vw;
+    height: 95vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -167,7 +175,7 @@ div .memoryCard {
     background-image: url("https://www.seekpng.com/png/full/304-3047371_coding-icon-programming-signs.png");
     background-repeat: no-repeat;
     background-size: 90%;
-    background-position: center; 
+    background-position: center;
 }
 
 .front-face {
@@ -180,19 +188,19 @@ div .memoryCard {
     backface-visibility: hidden;
     transform: rotateY(180deg);
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);  
+    background-color: rgb(255, 255, 255);
 }
 
 .flip {
     transform: rotateY(180deg);
 }
 
-.segundaPantalla{
-    display:none;
+.segundaPantalla {
+    display: none;
 }
 
 
-.jugar{
+.jugar {
     background-color: red;
     width: 180px;
     height: 180px;
@@ -201,38 +209,38 @@ div .memoryCard {
     font-size: 2rem;
     padding: 5px;
     text-align: center;
-    color: rgb(255, 255, 255);  
+    color: rgb(255, 255, 255);
 }
 
-.jugar:hover{
+.jugar:hover {
     background-color: rgb(216, 69, 69);
 }
 
-.vModal{
+.vModal {
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,.5);
-    position:fixed;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
     top: 0;
-    display:none;
+    display: none;
     padding: 1rem;
 }
 
-.modal-content{
+.modal-content {
     width: 55vw;
     height: 70vh;
     padding: 0.5rem;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:#E7C515;
+    background-color: #E7C515;
     border-radius: 10px;
-    margin: 4rem;
-    
+    margin: 5rem auto;
+
 }
 
 /* .btn-volver{
@@ -251,6 +259,63 @@ div .memoryCard {
     color: rgb(255, 255, 255);
 } */
 
-.btn-volver:hover{
+.btn-volver:hover {
     background-color: rgb(216, 69, 69);
+}
+
+/* Tables */
+@media (min-width: 600px) {
+
+    .memoryCard, .front-face {
+        width: 90px;
+        height: 90px;
+    }
+    .cardBoard {
+        width: 80vw;
+        height: 65vh; 
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    .inputName {
+        width: 35vw;
+    }
+    img {
+        height: 90%;
+    }
+    .modal-content {
+        height: 60vh;
+        margin: 6rem auto; 
+    }
+    .modal-img {
+        width: 70%;
+    }
+
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+
+    .inputName {
+        width: 20vw;
+    }
+
+    .cardBoard {
+        width: 40vw;
+        margin-top: 2rem;
+    }
+
+    .modal-content {
+        width: 40vw;
+        height: 75vh;
+        margin: 4.7rem auto; 
+    }
+    .modal-img {
+        height: 50%;
+    }
+    #saludoUsuario {
+        margin-top: 2.5rem;
+    }
+
+
 }
