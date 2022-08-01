@@ -12,6 +12,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 footer {
@@ -28,6 +29,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     /* width: 100vw; */
     /* height: 95vh; */
 }
@@ -71,7 +73,7 @@ h1 {
     font-size: 1rem;
 }
 
-#botonAJugar{
+#botonAJugar, .btn-volver{
     background-color: red;
     width: 130px;
     height: 40px;
@@ -93,7 +95,7 @@ h1 {
 
 #div-boton{
     width: 100%;
-    height: 110vh;
+    height: 120vh;
     display: flex;
     z-index: 100;
     align-items: center;
@@ -214,23 +216,26 @@ div .memoryCard {
     justify-content: center;
     background-color: rgba(0,0,0,.5);
     position:fixed;
+    top: 0;
     display:none;
+    padding: 1rem;
 }
 
 .modal-content{
-    width: 40vw;
+    width: 55vw;
     height: 70vh;
-    padding: .2rem;
+    padding: 0.5rem;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color:#E7C515;
-    margin: auto;
-    margin-top:10%;  
+    border-radius: 10px;
+    margin: 4rem;
+    
 }
 
-.btn-volver{
+/* .btn-volver{
     background-color: red;
     width: 150px;
     height: 45px;
@@ -239,12 +244,12 @@ div .memoryCard {
     border: none;
     font-size: 15px;
     text-align: center;
-}
+} */
 
-.btn-volver {
+/* .btn-volver {
     text-decoration: none;
     color: rgb(255, 255, 255);
-}
+} */
 
 .btn-volver:hover{
     background-color: rgb(216, 69, 69);
